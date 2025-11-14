@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Millsap Farm Dashboard</title>
+  <title>Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
+ </head>
 <body class="bg-[#344E41] text-[#DAD7CD] font-sans">
 
   <!-- navbar -->
@@ -17,13 +16,36 @@
     </div>
     <div class="flex items-center space-x-8">
       <nav class="flex space-x-8 text-[#DAD7CD]">
-        <a href="#" class="hover:text-[#D4A373]">Home</a>
-        <a href="#" class="hover:text-[#D4A373]">Control</a>
-        <a href="#" class="hover:text-[#D4A373]">Report</a>
-        <a href="#" class="hover:text-[#D4A373]">About</a>
+        <a href="/dashboard" class="hover:text-[#D4A373]">Home</a>
+        <a href="/control" class="hover:text-[#D4A373]">Control</a>
+        <a href="/report" class="hover:text-[#D4A373]">Report</a>
+        <a href="/about" class="hover:text-[#D4A373]">About</a>
       </nav>
       <div class="text-[#DAD7CD]">SuperAdmin ▾</div>
     </div>
+    <!-- <div class="flex items-center space-x-8">
+        <nav class="flex space-x-8 text-[#DAD7CD]">
+            <a href="/dashboard" class="hover:text-[#D4A373]">Home</a>
+            @if(auth()->check() && in_array(auth()->user()->role, ['admin','superadmin']))
+                <a href="/control" class="hover:text-[#D4A373]">Control</a>
+                <a href="/report" class="hover:text-[#D4A373]">Report</a>
+            @endif
+            <a href="/about" class="hover:text-[#D4A373]">About</a>
+        </nav>
+
+        <div class="text-[#DAD7CD] flex items-center space-x-4">
+            @if(auth()->check())
+                <span>{{ ucfirst(auth()->user()->role) }} ▾</span>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="px-3 py-1 bg-[#D4A373] rounded hover:bg-[#C17C50]">Logout</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="px-4 py-2 bg-[#D4A373] text-[#1C1C1C] rounded hover:bg-[#C17C50]">Login</a>
+                <a href="{{ route('register') }}" class="px-4 py-2 bg-[#DAD7CD] text-[#1C1C1C] rounded hover:bg-[#C17C50]">Register</a>
+            @endif
+        </div>
+    </div> -->
   </div>
 
 <!-- blur bg -->
@@ -107,8 +129,8 @@
         cutout: '60%',
         plugins: { legend: { display: false } },
         scales: {
-          x: { ticks: { color: '#DAD7CD' }, grid: { color: '#475B52' } },
-          y: { ticks: { color: '#DAD7CD' }, grid: { color: '#475B52' } }
+          x: { type: 'category', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } },
+          y: { type: 'linear', ticks: { color: '#51741bff'  }, grid: { color: '#475B52' } }
         }
       }
     });
