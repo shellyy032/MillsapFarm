@@ -19,6 +19,8 @@
         <a href="/dashboard" class="hover:text-[#D4A373]">Home</a>
         <a href="/control" class="hover:text-[#D4A373]">Control</a>
         <a href="/report" class="hover:text-[#D4A373]">Report</a>
+        <a href="/access" class="hover:text-[#D4A373]">Access</a>
+        <a href="/constraint" class="hover:text-[#D4A373]">Constraint</a>
         <a href="/about" class="hover:text-[#D4A373]">About</a>
       </nav>
       <div class="text-[#DAD7CD]">SuperAdmin ▾</div>
