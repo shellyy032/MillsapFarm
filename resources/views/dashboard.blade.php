@@ -9,7 +9,7 @@
 <body class="bg-[#344E41] text-[#DAD7CD] font-sans">
 
   <!-- navbar -->
-  <div class="bg-[#344E41] px-8 py-4 flex items-center justify-between shadow-lg">
+  <div class="bg-teal-900 px-8 py-4 flex items-center justify-between shadow-lg">
     <div class="flex items-center">
       <img src="https://img1.wsimg.com/isteam/ip/f7e4c243-2df4-478a-8464-d92c4cab6ab7/Logo%20with%20outline.png/:/rs=w:505,h:178,cg:true,m/cr=w:505,h:178/qt=q:95" 
            alt="Logo" class="h-12 object-contain">
@@ -23,29 +23,6 @@
       </nav>
       <div class="text-[#DAD7CD]">SuperAdmin ▾</div>
     </div>
-    <!-- <div class="flex items-center space-x-8">
-        <nav class="flex space-x-8 text-[#DAD7CD]">
-            <a href="/dashboard" class="hover:text-[#D4A373]">Home</a>
-            @if(auth()->check() && in_array(auth()->user()->role, ['admin','superadmin']))
-                <a href="/control" class="hover:text-[#D4A373]">Control</a>
-                <a href="/report" class="hover:text-[#D4A373]">Report</a>
-            @endif
-            <a href="/about" class="hover:text-[#D4A373]">About</a>
-        </nav>
-
-        <div class="text-[#DAD7CD] flex items-center space-x-4">
-            @if(auth()->check())
-                <span>{{ ucfirst(auth()->user()->role) }} ▾</span>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="px-3 py-1 bg-[#D4A373] rounded hover:bg-[#C17C50]">Logout</button>
-                </form>
-            @else
-                <a href="{{ route('login') }}" class="px-4 py-2 bg-[#D4A373] text-[#1C1C1C] rounded hover:bg-[#C17C50]">Login</a>
-                <a href="{{ route('register') }}" class="px-4 py-2 bg-[#DAD7CD] text-[#1C1C1C] rounded hover:bg-[#C17C50]">Register</a>
-            @endif
-        </div>
-    </div> -->
   </div>
 
 <!-- blur bg -->
@@ -84,7 +61,7 @@
 </div>
 
   <!-- penjelasan -->
-  <div class="bg-[#3A5A40] mx-8 p-6 rounded-xl grid grid-cols-2">
+  <div class="bg-teal-900 mx-8 p-6 rounded-xl grid grid-cols-2">
     <div>
       <div class="space-y-4">
         <div>

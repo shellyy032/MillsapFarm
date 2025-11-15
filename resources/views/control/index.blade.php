@@ -89,124 +89,123 @@
         </div>
 
         <!-- add user -->
-        <div id="addModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-            <div class="bg-[#DAD7CD] p-6 w-[750px] rounded-xl">
-                <h2 class="text-xl font-bold mb-6 text-[#344E41]">Add User</h2>
-                <form action="/control/add" method="POST">
-                    @csrf
-                    <div class="space-y-3">
-                        <h3 class="font-semibold mb-4 text-[#344E41]">Account Information</h3>
+<div id="addModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 overflow-auto">
+    <div class="bg-[#DAD7CD] p-6 w-full max-w-[750px] rounded-xl max-h-[90vh] overflow-y-auto">
+        <h2 class="text-xl font-bold mb-6 text-[#344E41]">Add User</h2>
+        <form action="/control/add" method="POST">
+            @csrf
+            <div class="space-y-3">
+                <h3 class="font-semibold mb-4 text-[#344E41]">Account Information</h3>
 
-                            <label class="block mb-1 text-[#344E41]">User ID</label>
-                            <input type="text" name="user_id"
-                                class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3">
+                <label class="block mb-1 text-[#344E41]">User ID</label>
+                <input type="text" name="user_id"
+                    class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3">
 
-                            <!-- Username -->
-                            <label class="block mb-1 text-[#344E41]">UserName</label>
-                            <input type="text" name="username"
-                                class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3" required>
+                <!-- Username -->
+                <label class="block mb-1 text-[#344E41]">UserName</label>
+                <input type="text" name="username"
+                    class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3" required>
 
-                            <!-- Email -->
-                            <label class="block mb-1 text-[#344E41]">Email</label>
-                            <input type="email" name="email"
-                                class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3" required>
+                <!-- Email -->
+                <label class="block mb-1 text-[#344E41]">Email</label>
+                <input type="email" name="email"
+                    class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3" required>
 
-                            <!-- Status Button Group -->
-                            <label class="block mb-1 text-[#344E41]">Status</label>
-                            <div class="flex gap-3 mb-3">
-                                <label>
-                                    <input type="radio" name="status" value="Active" class="hidden" checked>
-                                    <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#3A5A40] text-white">
-                                        Active
-                                    </div>
-                                </label>
-
-                                <label>
-                                    <input type="radio" name="status" value="Inactive" class="hidden">
-                                    <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#A3B18A] text-[#344E41]">
-                                        Passive
-                                    </div>
-                                </label>
-                            </div>
-
-                            <!-- Password -->
-                            <label class="block mb-1 text-[#344E41]">Password</label>
-                            <input type="password" name="password"
-                                class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3" required>
-
-                            <!-- Confirm -->
-                            <label class="block mb-1 text-[#344E41]">Confirm Password</label>
-                            <input type="password" name="password_confirmation"
-                                class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3" required>
+                <!-- Status Button Group -->
+                <label class="block mb-1 text-[#344E41]">Status</label>
+                <div class="flex gap-3 mb-3">
+                    <label>
+                        <input type="radio" name="status" value="Active" class="hidden" checked>
+                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#3A5A40] text-white">
+                            Active
                         </div>
+                    </label>
 
-                        <!-- RIGHT: ROLE + ACTIVITY -->
-                        <div>
-                            <h3 class="font-semibold mb-4 text-[#344E41]">Role</h3>
-
-                            <!-- ROLE BUTTON GROUP -->
-                            <div class="flex gap-3 mb-6">
-                                <label>
-                                    <input type="radio" name="role" value="USER" class="hidden" checked>
-                                    <div class="px-6 py-2 rounded-lg bg-[#BC6C25] text-white cursor-pointer">
-                                        USER
-                                    </div>
-                                </label>
-
-                                <label>
-                                    <input type="radio" name="role" value="ADMIN" class="hidden">
-                                    <div class="px-6 py-2 rounded-lg bg-[#A3B18A] text-[#344E41] cursor-pointer">
-                                        ADMIN
-                                    </div>
-                                </label>
-
-                                <label>
-                                    <input type="radio" name="role" value="KURIR" class="hidden">
-                                    <div class="px-6 py-2 rounded-lg bg-[#A3B18A] text-[#344E41] cursor-pointer">
-                                        KURIR
-                                    </div>
-                                </label>
-
-                                <label>
-                                    <input type="radio" name="role" value="SUPERVISOR" class="hidden">
-                                    <div class="px-6 py-2 rounded-lg bg-[#A3B18A] text-[#344E41] cursor-pointer">
-                                        SUPERVISOR
-                                    </div>
-                                </label>
-                            </div>
-
-                            <h3 class="font-semibold mb-3 text-[#344E41]">Account Activity</h3>
-
-                            <!-- Created -->
-                            <label class="block mb-1 text-[#344E41]">Created At</label>
-                            <input type="text" name="created_at"
-                                class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3"
-                                value="{{ date('Y-m-d H:i:s') }}" readonly>
-
-                            <!-- Last Activity -->
-                            <label class="block mb-1 text-[#344E41]">Last Activity</label>
-                            <input type="text" name="last_activity"
-                                class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3"
-                                value="-" readonly>
+                    <label>
+                        <input type="radio" name="status" value="Inactive" class="hidden">
+                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#A3B18A] text-[#344E41]">
+                            Passive
                         </div>
+                    </label>
+                </div>
 
-                    </div>
+                <!-- Password -->
+                <label class="block mb-1 text-[#344E41]">Password</label>
+                <input type="password" name="password"
+                    class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3" required>
 
-                    <!-- BUTTONS -->
-                    <div class="flex justify-end gap-3 mt-6">
-                        <button type="button" onclick="closeAdd()"
-                            class="px-5 py-2 border border-[#344E41] rounded text-[#344E41]">
-                            Cancel
-                        </button>
-
-                        <button class="px-5 py-2 rounded bg-[#3A5A40] text-white">
-                            Save
-                        </button>
-                    </div>
-
-                </form>
+                <!-- Confirm -->
+                <label class="block mb-1 text-[#344E41]">Confirm Password</label>
+                <input type="password" name="password_confirmation"
+                    class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3" required>
             </div>
-        </div>
+
+            <!-- RIGHT: ROLE + ACTIVITY -->
+            <div class="mt-6">
+                <h3 class="font-semibold mb-4 text-[#344E41]">Role</h3>
+
+                <!-- ROLE BUTTON GROUP -->
+                <div class="flex gap-3 mb-6 flex-wrap">
+                    <label>
+                        <input type="radio" name="role" value="USER" class="hidden" checked>
+                        <div class="px-6 py-2 rounded-lg bg-[#BC6C25] text-white cursor-pointer">
+                            USER
+                        </div>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="role" value="ADMIN" class="hidden">
+                        <div class="px-6 py-2 rounded-lg bg-[#A3B18A] text-[#344E41] cursor-pointer">
+                            ADMIN
+                        </div>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="role" value="KURIR" class="hidden">
+                        <div class="px-6 py-2 rounded-lg bg-[#A3B18A] text-[#344E41] cursor-pointer">
+                            KURIR
+                        </div>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="role" value="SUPERVISOR" class="hidden">
+                        <div class="px-6 py-2 rounded-lg bg-[#A3B18A] text-[#344E41] cursor-pointer">
+                            SUPERVISOR
+                        </div>
+                    </label>
+                </div>
+
+                <h3 class="font-semibold mb-3 text-[#344E41]">Account Activity</h3>
+
+                <!-- Created -->
+                <label class="block mb-1 text-[#344E41]">Created At</label>
+                <input type="text" name="created_at"
+                    class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3"
+                    value="{{ date('Y-m-d H:i:s') }}" readonly>
+
+                <!-- Last Activity -->
+                <label class="block mb-1 text-[#344E41]">Last Activity</label>
+                <input type="text" name="last_activity"
+                    class="w-full p-2 rounded bg-[#3A5A40] text-white outline-none mb-3"
+                    value="-" readonly>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="flex justify-end gap-3 mt-6">
+                <button type="button" onclick="closeAdd()"
+                    class="px-5 py-2 border border-[#344E41] rounded text-[#344E41]">
+                    Cancel
+                </button>
+
+                <button class="px-5 py-2 rounded bg-[#3A5A40] text-white">
+                    Save
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
 
 
 
