@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Forgot Password</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -16,60 +16,51 @@
     </style>
 </head>
 
-<body class="bg-blur min-h-screen flex items-center justify-center">
+    <body class="bg-blur min-h-screen flex items-center justify-center">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="relative bg-[#21453C] w-[380px] md:w-[420px] p-8 rounded-3xl shadow-xl text-white">
+            <div class="flex justify-center mb-6">
+                <img src="https://img1.wsimg.com/isteam/ip/f7e4c243-2df4-478a-8464-d92c4cab6ab7/Logo%20with%20outline.png/:/rs=w:505,h:178,cg:true,m/cr=w:505,h:178/qt=q:95" alt="Logo" class="w-40">
+            </div>
 
-    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <h1 class="text-center text-xl font-semibold mb-5">Forgot Password</h1>
 
-    <div class="relative bg-[#21453C] w-[380px] md:w-[420px] p-8 rounded-3xl shadow-xl text-white">
-      
-        <div class="flex justify-center mb-6">
-            <img src="https://img1.wsimg.com/isteam/ip/f7e4c243-2df4-478a-8464-d92c4cab6ab7/Logo%20with%20outline.png/:/rs=w:505,h:178,cg:true,m/cr=w:505,h:178/qt=q:95" alt="Logo" class="w-40">
-        </div>
-
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('forgot.submit') }}" method="POST" class="space-y-4">
             @csrf
 
-            <div class="mb-4">
-                <label class="text-sm">Username</label>
-                <input type="text" name="username" required
-                    class="w-full mt-2 px-4 py-2 rounded-full bg-white text-black outline-none focus:ring-2 focus:ring-orange-500">
+            <div>
+                <label class="text-sm">Email</label>
+                <input type="email" name="email" required
+                    class="w-full mt-1 p-3 rounded-full text-black focus:outline-none">
+                <p class="text-sm text-gray-300 mt-1">Please input active email to receive OTP</p>
             </div>
 
-            <div class="mb-4">
-                <label class="text-sm">Password</label>
-                <div class="relative">
-                    <input type="password" name="password" id="passwordInput" required
-                        class="w-full mt-2 px-4 py-2 rounded-full bg-white text-black outline-none focus:ring-2 focus:ring-orange-500">
-                    
-                    <span onclick="togglePassword()" class="absolute right-4 top-4 cursor-pointer text-black">
-                        👁️
-                    </span>
-                </div>
+            <div>
+                <label class="text-sm">OTP</label>
+                <input type="text" name="otp"
+                    class="w-full mt-1 p-3 rounded-full text-black focus:outline-none">
             </div>
 
-            <button type="submit"
-                class="w-full bg-orange-600 hover:bg-orange-700 transition py-2 mt-4 rounded-full font-semibold">
-                LOGIN
-            </button>
+            <div class="flex gap-3 mt-6">
+                <a href="{{ route('login') }}"
+                   class="flex-1 text-center py-3 rounded-full border border-white hover:bg-white hover:text-[#244e4a] font-semibold">
+                    BACK
+                </a>
+
+                <button type="submit"
+                    class="flex-1 bg-orange-600 hover:bg-orange-700 py-3 rounded-full font-bold tracking-wide">
+                    SUBMIT
+                </button>
+            </div>
+
         </form>
 
-        <div class="text-center mt-4 text-sm">
-            <a href="/forgotpass" class="text-blue-300 hover:underline">Forget Password?</a>
-        </div>
-
-        <div class="text-center mt-1 text-sm">
-            Doesn’t have an account yet?  
-            <a href="/register" class="text-yellow-300 hover:underline font-semibold">Register Here</a>
-        </div>
+        <p class="text-center text-sm mt-4 text-gray-300">
+            Doesn't have an account yet?
+            <a href="{{ route('register') }}" class="text-orange-400 hover:underline">Register Here</a>
+        </p>
 
     </div>
 
-    <script>
-        function togglePassword() {
-            const input = document.getElementById('passwordInput');
-            input.type = input.type === "password" ? "text" : "password";
-        }
-    </script>
-    
 </body>
 </html>

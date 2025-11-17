@@ -13,25 +13,38 @@
 <body class="bg-gray-100">
 
 <!-- navbar -->
-<div class="bg-teal-900 px-8 py-4 flex items-center justify-between shadow-lg">
-    <div class="flex items-center">
-        <img src="https://img1.wsimg.com/isteam/ip/f7e4c243-2df4-478a-8464-d92c4cab6ab7/Logo%20with%20outline.png" 
+    <div class="bg-teal-900 px-8 py-4 flex items-center justify-between shadow-lg">
+        <div class="flex items-center">
+        <img src="https://img1.wsimg.com/isteam/ip/f7e4c243-2df4-478a-8464-d92c4cab6ab7/Logo%20with%20outline.png/:/rs=w:505,h:178,cg:true,m/cr=w:505,h:178/qt=q:95" 
             alt="Logo" class="h-12 object-contain">
-    </div>
-    <div class="flex items-center space-x-8">
+        </div>
+        <div class="flex items-center space-x-8">
         <nav class="flex space-x-8 text-[#DAD7CD]">
             <a href="/dashboard" class="hover:text-[#D4A373]">Home</a>
             <a href="/control" class="hover:text-[#D4A373]">Control</a>
-            <a href="/report/product" class="hover:text-[#D4A373]">Report Produk</a>
+            <a href="/report" class="hover:text-[#D4A373]">Report</a>
+            <a href="/access" class="hover:text-[#D4A373]">Access</a>
+            <a href="/constraint" class="hover:text-[#D4A373]">Constraint</a>
+            <a href="/about" class="hover:text-[#D4A373]">About</a>
         </nav>
         <div class="text-[#DAD7CD]">SuperAdmin ▾</div>
+        </div>
     </div>
-</div>
 
 <!-- title -->
 <h1 class="text-center text-4xl font-extrabold text-yellow-600 mt-8 tracking-wider">
     REPORT PRODUK
 </h1>
+
+    <div class="w-11/12 mx-auto mt-10 bg-teal-900 p-3 rounded-xl flex gap-4 text-white font-semibold">
+        @foreach (['PRODUK','TRANSAKSI','DIVISI','RIWAYAT'] as $r)
+            <a href="/report?role={{ $r }}"
+            class="px-6 py-2 rounded-lg transition
+            {{ $currentRole == $r ? 'bg-white text-teal-900 font-bold shadow' : '' }}">
+                {{ $r }}
+            </a>
+        @endforeach
+    </div>
 
 <!-- action bar -->
 <div class="w-11/12 mx-auto mt-6 flex justify-between items-center">

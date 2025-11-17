@@ -1,3 +1,4 @@
+<?php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -8,11 +9,11 @@ class User extends Model
     public $incrementing = true;
 
     protected $fillable = [
-        'nama_pengguna',
+        'name',
         'email',
+        'phone',
         'password',
-        'id_role',
-        'id_divisi',
+        'role',
     ];
 
     protected $hidden = ['password'];

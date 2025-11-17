@@ -6,15 +6,16 @@ use Illuminate\Http\Request;
 
 class SuperAdminReportController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $currentRole = $request->query('role', 'PRODUK');
         $products = [
             ['id' => 1, 'nama' => 'Pisang', 'kategori'=>'Buah', 'harga' => 15000, 'stok' => 120, 'status'=>'Available'],
             ['id' => 2, 'nama' => 'Mangga', 'kategori'=>'Buah', 'harga' => 20000, 'stok' => 80, 'status'=>'Available'],
             ['id' => 3, 'nama' => 'Bunga Mawar', 'kategori'=>'Bunga', 'harga' => 35000, 'stok' => 45, 'status'=>'Out of Stock'],
         ];
 
-        return view('report.index', compact('products'));
+        return view('SuperAdmin.report', compact('products', 'currentRole'));
     }
 
     public function addProduct(Request $request)

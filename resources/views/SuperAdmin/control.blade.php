@@ -18,44 +18,39 @@
 
 <body class="bg-gray-100">
 
-    <!-- NAVBAR -->
+    <!-- nav -->
     <div class="bg-teal-900 px-8 py-4 flex items-center justify-between shadow-lg">
-        <div class="flex items-center">
-            <img src="https://img1.wsimg.com/isteam/ip/f7e4c243-2df4-478a-8464-d92c4cab6ab7/Logo%20with%20outline.png/:/rs=w:505,h:178,cg:true,m/cr=w:505,h:178/qt=q:95" 
-                alt="Logo" class="h-12 object-contain">
-        </div>
-
-        <div class="flex items-center space-x-8">
-            <nav class="flex space-x-8 text-[#DAD7CD]">
-                <a href="/dashboard" class="hover:text-[#D4A373]">Home</a>
-                <a href="/control" class="hover:text-[#D4A373]">Control</a>
-                <a href="/report" class="hover:text-[#D4A373]">Report</a>
-                <a href="/about" class="hover:text-[#D4A373]">About</a>
-            </nav>
-            <div class="text-[#DAD7CD]">SuperAdmin ▾</div>
-        </div>
+    <div class="flex items-center">
+      <img src="https://img1.wsimg.com/isteam/ip/f7e4c243-2df4-478a-8464-d92c4cab6ab7/Logo%20with%20outline.png/:/rs=w:505,h:178,cg:true,m/cr=w:505,h:178/qt=q:95" 
+           alt="Logo" class="h-12 object-contain">
     </div>
+    <div class="flex items-center space-x-8">
+      <nav class="flex space-x-8 text-[#DAD7CD]">
+        <a href="/dashboard" class="hover:text-[#D4A373]">Home</a>
+        <a href="/control" class="hover:text-[#D4A373]">Control</a>
+        <a href="/report" class="hover:text-[#D4A373]">Report</a>
+        <a href="/access" class="hover:text-[#D4A373]">Access</a>
+        <a href="/constraint" class="hover:text-[#D4A373]">Constraint</a>
+        <a href="/about" class="hover:text-[#D4A373]">About</a>
+      </nav>
+      <div class="text-[#DAD7CD]">SuperAdmin ▾</div>
+    </div>
+  </div>
 
-    <!-- TITLE -->
-    <h1 class="text-center text-4xl font-extrabold text-yellow-600 mt-8 tracking-wider">
-        CONTROL DASHBOARD
-    </h1>
+    <h1 class="text-center text-4xl font-extrabold text-yellow-600 mt-8 tracking-wider">CONTROL DASHBOARD</h1>
 
-    <!-- TABS -->
+    <!-- tabs -->
     <div class="w-11/12 mx-auto mt-10 bg-teal-900 p-3 rounded-xl flex gap-4 text-white font-semibold">
     @foreach (['USER','ADMIN','KURIR','SUPERVISOR'] as $r)
         <a href="/control?role={{ $r }}"
            class="px-6 py-2 rounded-lg transition
-           {{ $role == $r ? 'bg-white text-teal-900 font-bold shadow' : '' }}">
+           {{ $currentRole == $r ? 'bg-white text-teal-900 font-bold shadow' : '' }}">
             {{ $r }}
         </a>
     @endforeach
+    </div>
 
-</div>
-
-    <!-- CONTENT CARD -->
     <div class="w-11/12 mx-auto bg-white shadow-md rounded-xl mt-4 p-6">
-
         <!-- action bar -->
         <div class="flex justify-between items-center mb-4 gap-4">
             <!-- search -->
@@ -83,8 +78,7 @@
             </div>
 
             <!-- add -->
-            <div class="flex items-center gap-4 text-teal-900 text-xl">
-                <button title="Add" onclick="openAdd()">➕</button>
+            <button onclick="openAdd()" class="bg-green-600 text-white px-4 py-2 rounded-lg shadow">➕</button>
             </div>
         </div>
 
@@ -288,6 +282,8 @@
         <div>ADMIN : {{ $counts['ADMIN'] }}</div>
         <div>KURIR : {{ $counts['KURIR'] }}</div>
         <div>SUPERVISOR : {{ $counts['SUPERVISOR'] }}</div>
+        <div>SUPERADMIN : {{ $counts['SUPERADMIN'] ?? 0 }}</div>
+
     </div>
 
     <script>

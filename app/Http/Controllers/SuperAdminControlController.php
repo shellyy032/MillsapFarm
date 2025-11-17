@@ -4,17 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SuperAdminController extends Controller
+class SuperAdminControlController extends Controller
 {
     public function index(Request $request)
     {
-        // SET default role → USER
-        $role = $request->get('role', 'USER');
+        $role = $request->get('role', 'SUPERADMIN');
 
-        // Dummy data first-time
         if (!session()->has('roles')) {
             session([
                 'roles' => [
+                    'SUPERADMIN' => [
+                        [
+                            'id_user' => 1,
+                            'nama_pengguna' => 'SuperAdmin A',
+                            'email' => 'superadminA@example.com',
+                            'status' => 'Active',
+                            'created_at' => '2025-01-09',
+                        ],
+                    ],
                     'USER' => [
                         [
                             'id_user' => 1,
@@ -67,10 +74,8 @@ class SuperAdminController extends Controller
 
         $roles = session('roles');
 
-        // Ambil users berdasarkan role yang dipilih
         $users = $roles[$role];
 
-        // SEARCH
         if ($request->search) {
             $search = strtolower($request->search);
             $users = array_filter($users, function ($u) use ($search) {
@@ -79,7 +84,6 @@ class SuperAdminController extends Controller
             });
         }
 
-        // === COUNTER PER ROLE ===
         $counts = [
             'USER' => count($roles['USER']),
             'ADMIN' => count($roles['ADMIN']),
@@ -87,7 +91,7 @@ class SuperAdminController extends Controller
             'SUPERVISOR' => count($roles['SUPERVISOR']),
         ];
 
-        return view('control.index', compact('users', 'role', 'counts'));
+        return view('SuperAdmin.control', compact('users', 'role', 'counts'));
     }
 
     public function addUser(Request $request)
