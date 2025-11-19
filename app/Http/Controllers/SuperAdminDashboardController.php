@@ -8,6 +8,9 @@ class SuperAdminDashboardController extends Controller
 {
     public function index()
     {
-        return view('SuperAdmin.index');
+        $role = 'superadmin'; 
+        return view('SuperAdmin.index', [
+            'role' => $role
+        ]);
     }
 }

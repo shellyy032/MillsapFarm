@@ -49,6 +49,6 @@ class SuperAdminAccessController extends Controller
 
     public function superadmin()
     {
-        return view('access.superadminaccess');
+        return view('SuperAdmin.access');
     }
 }
