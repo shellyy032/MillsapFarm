@@ -6,7 +6,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
  </head>
-<body class="bg-[#344E41] text-[#DAD7CD] font-sans">
+<body class="bg-teal-900 text-[#DAD7CD] font-sans">
 
   <!-- navbar -->
   <div class="bg-teal-900 px-8 py-4 flex items-center justify-between shadow-lg">
@@ -72,34 +72,38 @@
 </div>
 
   <!-- penjelasan -->
-  <div class="bg-teal-900 mx-8 p-6 rounded-xl grid grid-cols-2">
-    <div>
-      <div class="space-y-4">
+  <div class="w-full max-w-screen bg-teal-900 py-5 px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-8 items-center">
+      <div class="space-y-10 pl-10">
         <div>
-          <h3 class="text-[#D4A373] font-bold">LOREM IPSUM</h3>
+          <h3 class="text-[#E9C46A] font-extrabold text-2xl">LOREM IPSUM</h3>
           <p class="text-[#A3B18A] text-sm">Lorem ipsum dolor sit amet</p>
+          <p class="text-white font-semibold mt-1">30%</p>
         </div>
         <div>
-          <h3 class="text-[#D4A373] font-bold">LOREM IPSUM</h3>
+          <h3 class="text-[#A3B18A] font-extrabold text-2xl">LOREM IPSUM</h3>
           <p class="text-[#A3B18A] text-sm">Lorem ipsum dolor sit amet</p>
+          <p class="text-white font-semibold mt-1">30%</p>
         </div>
         <div>
-          <h3 class="text-[#D4A373] font-bold">LOREM IPSUM</h3>
+          <h3 class="text-[#8FB16E] font-extrabold text-2xl">LOREM IPSUM</h3>
           <p class="text-[#A3B18A] text-sm">Lorem ipsum dolor sit amet</p>
+          <p class="text-white font-semibold mt-1">30%</p>
         </div>
         <div>
-          <h3 class="text-[#D4A373] font-bold">LOREM IPSUM</h3>
+          <h3 class="text-[#D4A373] font-extrabold text-2xl">LOREM IPSUM</h3>
           <p class="text-[#A3B18A] text-sm">Lorem ipsum dolor sit amet</p>
+          <p class="text-white font-semibold mt-1">30%</p>
         </div>
       </div>
-    </div>
-    <div class="flex justify-center items-center">
-      <canvas id="pieChart" class="w-60 h-60"></canvas>
+      <div class="flex justify-center">
+        <canvas id="pieChart" class="w-[350px] h-[350px]"></canvas>
+      </div>
     </div>
   </div>
 
   <!-- chart -->
-  <canvas id="myChart" width="400" height="200"></canvas>
+  <canvas id="myChart" width="400" height="100"></canvas>
   <script>
     new Chart(document.getElementById('lineChart'), {
       type: 'line',
@@ -115,7 +119,7 @@
         }]
       },
       options: {
-        cutout: '60%',
+        cutout: '40%',
         plugins: { legend: { display: false } },
         scales: {
           x: { type: 'category', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } },
@@ -124,7 +128,6 @@
       }
     });
 
-    // donat
     new Chart(document.getElementById('pieChart'), {
       type: 'doughnut',
       data: {
@@ -138,57 +141,55 @@
     });
   </script>
 
-<!-- loss -->
-<div class="bg-[#DAD7CD] mx-8 mt-8 p-8 rounded-t-[80px] text-center text-[#3A5A40]">
-  <h2 class="text-lg font-bold tracking-widest mb-6">KERUGIAN</h2>
 
-  <div class="grid grid-cols-2 gap-4 items-start">
- 
-  <div class="relative w-1/2 h-40 rounded-xl overflow-hidden ml-auto">
-    <img src="https://media.timeout.com/images/105596022/image.jpg" 
-         alt="Food" class="w-full h-full object-cover">
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
-      <p class="font-bold text-lg">LOREM</p>
-      <p class="text-3xl font-bold mt-1">1200</p>
+  <div class="relative bg-[#DAD7CD] pb-6 pt-20 pb-6 px-6 rounded-t-[50%] text-center text-[#3A5A40] w-full">
+    <h2 class="text-lg font-bold tracking-widest mb-6">KERUGIAN</h2>
+
+    <div class="grid grid-cols-2 gap-4 items-start">
+  
+    <div class="relative w-1/2 h-40 rounded-xl overflow-hidden ml-auto">
+      <img src="https://media.timeout.com/images/105596022/image.jpg" 
+          alt="Food" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+        <p class="font-bold text-lg">LOREM</p>
+        <p class="text-3xl font-bold mt-1">1200</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e" 
+            alt="Loss 1" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span>500</span>
+        </div>
+      </div>
+
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://media.gq.com/photos/581799e0a6fe84375dbe8d86/3:2/w_800/Cheese%201.jpg"
+            alt="Loss 2" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span class="translate-x-[-6px]">15</span>
+        </div>
+      </div>
+
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://www.epicgardening.com/wp-content/uploads/2023/09/plants-with-tiny-flowers.jpeg"
+            alt="Loss 3" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span>5</span>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="flex flex-col gap-3">
-    <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
-      <img src="https://images.unsplash.com/photo-1542838132-92c53300491e" 
-           alt="Loss 1" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/40"></div>
-      <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
-        <span>LOREM</span>
-        <span>500</span>
-      </div>
-    </div>
-
-    <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
-      <img src="https://media.gq.com/photos/581799e0a6fe84375dbe8d86/3:2/w_800/Cheese%201.jpg"
-           alt="Loss 2" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/40"></div>
-      <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
-        <span>LOREM</span>
-        <span class="translate-x-[-6px]">15</span>
-      </div>
-    </div>
-
-    <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
-      <img src="https://www.epicgardening.com/wp-content/uploads/2023/09/plants-with-tiny-flowers.jpeg"
-           alt="Loss 3" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/40"></div>
-      <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
-        <span>LOREM</span>
-        <span>5</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  <!-- best seller -->
   <h2 class="text-lg font-bold tracking-widest mt-10 mb-4 text-[#432818]">BEST SELLER</h2>
   <div class="space-y-3 w-2/3 mx-auto">
     <div class="flex justify-between items-center bg-[#588157] text-white font-bold py-2 px-4 rounded-lg">
@@ -213,51 +214,714 @@
       <span>150</span>
     </div>
   </div>
+  </div>
 
-<!-- toogle -->
-  <div class="w-full mt-4 space-y-3">
-  <details class="bg-gray-100 rounded-lg p-3 cursor-pointer group">
-    <summary class="flex justify-between items-center font-semibold text-gray-800">
-      <span class="translate-x-0 block">Toggle 1</span>
-      <svg class="w-5 h-5 text-gray-600 transition-transform duration-200 group-open:rotate-180" 
-           xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-      </svg>
-    </summary>
-    <p class="text-gray-600 mt-2">Isi konten toggle pertama.</p>
+  <div class="mt-4 space-y-3 w-full">
+    <details class="w-full bg-[#E9C46A] cursor-pointer group overflow-hidden rounded-lg">
+    <summary class="block w-full list-none flex justify-between items-center font-semibold text-gray-800 p-4">
+        <span >Toggle 1</span>
+        <svg class="w-5 h-5 text-gray-600 transition-transform duration-200 group-open:rotate-180" 
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div class="w-full max-w-screen bg-teal-900 py-5 px-8">
+      <div class="max-w-7xl mx-auto grid grid-cols-2 gap-8 items-center">
+        <div class="space-y-10 pl-10">
+          <div class="space-y-4 text-sm">
+            <div class="text-green-300">
+              <h3 class="font-semibold">TERJUAL</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">74,9%</p>
+            </div>
+            <div class="text-yellow-200">
+              <h3 class="font-semibold">SISA</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">22,1%</p>
+            </div>
+            <div class="text-red-300">
+              <h3 class="font-semibold">RUSAK</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">8,0%</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <canvas id="pieChart" class="w-[350px] h-[350px]"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <canvas id="lineChart" width="400" height="0"></canvas>
+    <canvas id="pieChart" width="400" height="0"></canvas>
+    <script>
+      new Chart(document.getElementById('lineChart'), {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            label: 'Revenue ($M)',
+            data: [10, 15, 27, 32, 40, 45],
+            borderColor: '#D4A373',
+            backgroundColor: '#D4A37333',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { type: 'category', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } },
+            y: { type: 'linear', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } }
+          }
+        }
+      });
+
+      new Chart(document.getElementById('pieChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['A', 'B', 'C', 'D'],
+          datasets: [{
+            data: [33.3, 27.8, 20.4, 18.5],
+            backgroundColor: ['#A3B18A', '#588157', '#3A5A40', '#D4A373'],
+          }]
+        },
+        options: { plugins: { legend: { display: false } } }
+      });
+    </script>
+
+
+  <div class="w-full max-w-screen bg-[#DAD7CD] py-5">
+    <div class="relative bg-[#DAD7CD] pb-6 pt-20 px-0 rounded-t-[50%] text-center text-[#3A5A40] w-full">
+    <div class="bg-[#DAD7CD] p-0 rounded-lg">
+      <h3 class="font-bold text-center text-gray-700 tracking-wide mb-4">AKTIVITAS TERAKHIR</h3>
+      <div class="space-y-4 text-sm">
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <h2 class="text-lg font-bold tracking-widest mb-6">KERUGIAN</h2>
+
+    <div class="grid grid-cols-2 gap-4 items-start">
+  
+    <div class="relative w-1/2 h-40 rounded-xl overflow-hidden ml-auto">
+      <img src="https://media.timeout.com/images/105596022/image.jpg" 
+          alt="Food" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+        <p class="font-bold text-lg">LOREM</p>
+        <p class="text-3xl font-bold mt-1">1200</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e" 
+            alt="Loss 1" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span>500</span>
+        </div>
+      </div>
+
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://media.gq.com/photos/581799e0a6fe84375dbe8d86/3:2/w_800/Cheese%201.jpg"
+            alt="Loss 2" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span class="translate-x-[-6px]">15</span>
+        </div>
+      </div>
+
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://www.epicgardening.com/wp-content/uploads/2023/09/plants-with-tiny-flowers.jpeg"
+            alt="Loss 3" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span>5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2 class="text-lg font-bold tracking-widest mt-10 mb-4 text-[#432818] text-center">BEST SELLER</h2>
+  <div class="space-y-3 w-2/3 mx-auto">
+    <div class="flex justify-between items-center bg-[#588157] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🍕</span>
+        <span>PIZZA PEPPERONI</span>
+      </div>
+      <span>500</span>
+    </div>
+    <div class="flex justify-between items-center bg-[#7F5539] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🧀</span>
+        <span>MOZARELLA</span>
+      </div>
+      <span>350</span>
+    </div>
+    <div class="flex justify-between items-center bg-[#D4A373] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🌸</span>
+        <span>FLOWER BOUQUET</span>
+      </div>
+      <span>150</span>
+    </div>
+  </div>
+  </div>
   </details>
 
-  <details class="bg-gray-100 rounded-lg p-3 cursor-pointer group">
-    <summary class="flex justify-between items-center font-semibold text-gray-800">
+  <div class="mt-4 space-y-3 w-full">
+    <details class="w-full bg-[#A3B18A] cursor-pointer group overflow-hidden rounded-lg">
+    <summary class="block w-full list-none flex justify-between items-center font-semibold text-gray-800 p-4">
       <span class="translate-x-2 block">Toggle 2</span>
       <svg class="w-5 h-5 text-gray-600 transition-transform duration-200 group-open:rotate-180" 
            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
       </svg>
     </summary>
-    <p class="text-gray-600 mt-2">Isi konten toggle kedua.</p>
+    <div class="w-full max-w-screen bg-teal-900 py-5 px-8">
+      <div class="max-w-7xl mx-auto grid grid-cols-2 gap-8 items-center">
+        <div class="space-y-10 pl-10">
+          <div class="space-y-4 text-sm">
+            <div class="text-green-300">
+              <h3 class="font-semibold">TERJUAL</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">74,9%</p>
+            </div>
+            <div class="text-yellow-200">
+              <h3 class="font-semibold">SISA</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">22,1%</p>
+            </div>
+            <div class="text-red-300">
+              <h3 class="font-semibold">RUSAK</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">8,0%</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <canvas id="pieChart" class="w-[350px] h-[350px]"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <canvas id="lineChart" width="400" height="0"></canvas>
+    <canvas id="pieChart" width="400" height="0"></canvas>
+    <script>
+      new Chart(document.getElementById('lineChart'), {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            label: 'Revenue ($M)',
+            data: [10, 15, 27, 32, 40, 45],
+            borderColor: '#D4A373',
+            backgroundColor: '#D4A37333',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { type: 'category', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } },
+            y: { type: 'linear', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } }
+          }
+        }
+      });
+
+      new Chart(document.getElementById('pieChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['A', 'B', 'C', 'D'],
+          datasets: [{
+            data: [33.3, 27.8, 20.4, 18.5],
+            backgroundColor: ['#A3B18A', '#588157', '#3A5A40', '#D4A373'],
+          }]
+        },
+        options: { plugins: { legend: { display: false } } }
+      });
+    </script>
+
+
+  <div class="w-full max-w-screen bg-[#DAD7CD] py-5">
+    <div class="relative bg-[#DAD7CD] pb-6 pt-20 px-0 rounded-t-[50%] text-center text-[#3A5A40] w-full">
+    <div class="bg-[#DAD7CD] p-0 rounded-lg">
+      <h3 class="font-bold text-center text-gray-700 tracking-wide mb-4">AKTIVITAS TERAKHIR</h3>
+      <div class="space-y-4 text-sm">
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <h2 class="text-lg font-bold tracking-widest mb-6">KERUGIAN</h2>
+
+    <div class="grid grid-cols-2 gap-4 items-start">
+  
+    <div class="relative w-1/2 h-40 rounded-xl overflow-hidden ml-auto">
+      <img src="https://media.timeout.com/images/105596022/image.jpg" 
+          alt="Food" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+        <p class="font-bold text-lg">LOREM</p>
+        <p class="text-3xl font-bold mt-1">1200</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e" 
+            alt="Loss 1" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span>500</span>
+        </div>
+      </div>
+
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://media.gq.com/photos/581799e0a6fe84375dbe8d86/3:2/w_800/Cheese%201.jpg"
+            alt="Loss 2" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span class="translate-x-[-6px]">15</span>
+        </div>
+      </div>
+
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://www.epicgardening.com/wp-content/uploads/2023/09/plants-with-tiny-flowers.jpeg"
+            alt="Loss 3" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span>5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2 class="text-lg font-bold tracking-widest mt-10 mb-4 text-[#432818] text-center">BEST SELLER</h2>
+  <div class="space-y-3 w-2/3 mx-auto">
+    <div class="flex justify-between items-center bg-[#588157] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🍕</span>
+        <span>PIZZA PEPPERONI</span>
+      </div>
+      <span>500</span>
+    </div>
+    <div class="flex justify-between items-center bg-[#7F5539] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🧀</span>
+        <span>MOZARELLA</span>
+      </div>
+      <span>350</span>
+    </div>
+    <div class="flex justify-between items-center bg-[#D4A373] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🌸</span>
+        <span>FLOWER BOUQUET</span>
+      </div>
+      <span>150</span>
+    </div>
+  </div>
+  </div>
   </details>
 
-  <details class="bg-gray-100 rounded-lg p-3 cursor-pointer group">
-    <summary class="flex justify-between items-center font-semibold text-gray-800">
+  <div class="mt-4 space-y-3 w-full">
+    <details class="w-full bg-[#8FB16E] cursor-pointer group overflow-hidden rounded-lg">
+    <summary class="block w-full list-none flex justify-between items-center font-semibold text-gray-800 p-4">
       <span class="translate-x-4 block">Toggle 3</span>
       <svg class="w-5 h-5 text-gray-600 transition-transform duration-200 group-open:rotate-180" 
            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
       </svg>
     </summary>
-    <p class="text-gray-600 mt-2">Isi konten toggle ketiga.</p>
+    <div class="w-full max-w-screen bg-teal-900 py-5 px-8">
+      <div class="max-w-7xl mx-auto grid grid-cols-2 gap-8 items-center">
+        <div class="space-y-10 pl-10">
+          <div class="space-y-4 text-sm">
+            <div class="text-green-300">
+              <h3 class="font-semibold">TERJUAL</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">74,9%</p>
+            </div>
+            <div class="text-yellow-200">
+              <h3 class="font-semibold">SISA</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">22,1%</p>
+            </div>
+            <div class="text-red-300">
+              <h3 class="font-semibold">RUSAK</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">8,0%</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <canvas id="pieChart" class="w-[350px] h-[350px]"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <canvas id="lineChart" width="400" height="0"></canvas>
+    <canvas id="pieChart" width="400" height="0"></canvas>
+    <script>
+      new Chart(document.getElementById('lineChart'), {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            label: 'Revenue ($M)',
+            data: [10, 15, 27, 32, 40, 45],
+            borderColor: '#D4A373',
+            backgroundColor: '#D4A37333',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { type: 'category', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } },
+            y: { type: 'linear', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } }
+          }
+        }
+      });
+
+      new Chart(document.getElementById('pieChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['A', 'B', 'C', 'D'],
+          datasets: [{
+            data: [33.3, 27.8, 20.4, 18.5],
+            backgroundColor: ['#A3B18A', '#588157', '#3A5A40', '#D4A373'],
+          }]
+        },
+        options: { plugins: { legend: { display: false } } }
+      });
+    </script>
+
+
+  <div class="w-full max-w-screen bg-[#DAD7CD] py-5">
+    <div class="relative bg-[#DAD7CD] pb-6 pt-20 px-0 rounded-t-[50%] text-center text-[#3A5A40] w-full">
+    <div class="bg-[#DAD7CD] p-0 rounded-lg">
+      <h3 class="font-bold text-center text-gray-700 tracking-wide mb-4">AKTIVITAS TERAKHIR</h3>
+      <div class="space-y-4 text-sm">
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <h2 class="text-lg font-bold tracking-widest mb-6">KERUGIAN</h2>
+
+    <div class="grid grid-cols-2 gap-4 items-start">
+  
+    <div class="relative w-1/2 h-40 rounded-xl overflow-hidden ml-auto">
+      <img src="https://media.timeout.com/images/105596022/image.jpg" 
+          alt="Food" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+        <p class="font-bold text-lg">LOREM</p>
+        <p class="text-3xl font-bold mt-1">1200</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e" 
+            alt="Loss 1" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span>500</span>
+        </div>
+      </div>
+
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://media.gq.com/photos/581799e0a6fe84375dbe8d86/3:2/w_800/Cheese%201.jpg"
+            alt="Loss 2" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span class="translate-x-[-6px]">15</span>
+        </div>
+      </div>
+
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://www.epicgardening.com/wp-content/uploads/2023/09/plants-with-tiny-flowers.jpeg"
+            alt="Loss 3" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span>5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2 class="text-lg font-bold tracking-widest mt-10 mb-4 text-[#432818] text-center">BEST SELLER</h2>
+  <div class="space-y-3 w-2/3 mx-auto">
+    <div class="flex justify-between items-center bg-[#588157] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🍕</span>
+        <span>PIZZA PEPPERONI</span>
+      </div>
+      <span>500</span>
+    </div>
+    <div class="flex justify-between items-center bg-[#7F5539] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🧀</span>
+        <span>MOZARELLA</span>
+      </div>
+      <span>350</span>
+    </div>
+    <div class="flex justify-between items-center bg-[#D4A373] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🌸</span>
+        <span>FLOWER BOUQUET</span>
+      </div>
+      <span>150</span>
+    </div>
+  </div>
+  </div>
   </details>
 
-  <details class="bg-gray-100 rounded-lg p-3 cursor-pointer group">
-    <summary class="flex justify-between items-center font-semibold text-gray-800">
+  <div class="mt-4 space-y-3 w-full">
+    <details class="w-full bg-[#D4A373] cursor-pointer group overflow-hidden rounded-lg">
+    <summary class="block w-full list-none flex justify-between items-center font-semibold text-gray-800 p-4">
       <span class="translate-x-6 block">Toggle 4</span>
       <svg class="w-5 h-5 text-gray-600 transition-transform duration-200 group-open:rotate-180" 
            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
       </svg>
     </summary>
-    <p class="text-gray-600 mt-2">Isi konten toggle keempat.</p>
+    <div class="w-full max-w-screen bg-teal-900 py-5 px-8">
+      <div class="max-w-7xl mx-auto grid grid-cols-2 gap-8 items-center">
+        <div class="space-y-10 pl-10">
+          <div class="space-y-4 text-sm">
+            <div class="text-green-300">
+              <h3 class="font-semibold">TERJUAL</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">74,9%</p>
+            </div>
+            <div class="text-yellow-200">
+              <h3 class="font-semibold">SISA</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">22,1%</p>
+            </div>
+            <div class="text-red-300">
+              <h3 class="font-semibold">RUSAK</h3>
+              <p>Lorem ipsum dolor sit amet</p>
+              <p class="font-bold">8,0%</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <canvas id="pieChart" class="w-[350px] h-[350px]"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <canvas id="lineChart" width="400" height="0"></canvas>
+    <canvas id="pieChart" width="400" height="0"></canvas>
+    <script>
+      new Chart(document.getElementById('lineChart'), {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            label: 'Revenue ($M)',
+            data: [10, 15, 27, 32, 40, 45],
+            borderColor: '#D4A373',
+            backgroundColor: '#D4A37333',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { type: 'category', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } },
+            y: { type: 'linear', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } }
+          }
+        }
+      });
+
+      new Chart(document.getElementById('pieChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['A', 'B', 'C', 'D'],
+          datasets: [{
+            data: [33.3, 27.8, 20.4, 18.5],
+            backgroundColor: ['#A3B18A', '#588157', '#3A5A40', '#D4A373'],
+          }]
+        },
+        options: { plugins: { legend: { display: false } } }
+      });
+    </script>
+
+
+  <div class="w-full max-w-screen bg-[#DAD7CD] py-5">
+    <div class="relative bg-[#DAD7CD] pb-6 pt-20 px-0 rounded-t-[50%] text-center text-[#3A5A40] w-full">
+    <div class="bg-[#DAD7CD] p-0 rounded-lg">
+      <h3 class="font-bold text-center text-gray-700 tracking-wide mb-4">AKTIVITAS TERAKHIR</h3>
+      <div class="space-y-4 text-sm">
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+        <div class="flex flex-col items-center space-y-1">
+          <p class="font-semibold text-center">Supervisor Riza</p>
+          <p class="text-center">Update stok data pizza pepperoni</p>
+          <p class="font-bold text-center">200 → 245</p>
+          <p class="text-gray-500 text-xs text-center">25 Oktober 2025, 10:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <h2 class="text-lg font-bold tracking-widest mb-6">KERUGIAN</h2>
+
+    <div class="grid grid-cols-2 gap-4 items-start">
+  
+    <div class="relative w-1/2 h-40 rounded-xl overflow-hidden ml-auto">
+      <img src="https://media.timeout.com/images/105596022/image.jpg" 
+          alt="Food" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+        <p class="font-bold text-lg">LOREM</p>
+        <p class="text-3xl font-bold mt-1">1200</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e" 
+            alt="Loss 1" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span>500</span>
+        </div>
+      </div>
+
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://media.gq.com/photos/581799e0a6fe84375dbe8d86/3:2/w_800/Cheese%201.jpg"
+            alt="Loss 2" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span class="translate-x-[-6px]">15</span>
+        </div>
+      </div>
+
+      <div class="relative w-1/2 h-12 rounded-lg overflow-hidden">
+        <img src="https://www.epicgardening.com/wp-content/uploads/2023/09/plants-with-tiny-flowers.jpeg"
+            alt="Loss 3" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex justify-between items-center px-4 text-white font-semibold text-sm">
+          <span>LOREM</span>
+          <span>5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2 class="text-lg font-bold tracking-widest mt-10 mb-4 text-[#432818] text-center">BEST SELLER</h2>
+  <div class="space-y-3 w-2/3 mx-auto">
+    <div class="flex justify-between items-center bg-[#588157] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🍕</span>
+        <span>PIZZA PEPPERONI</span>
+      </div>
+      <span>500</span>
+    </div>
+    <div class="flex justify-between items-center bg-[#7F5539] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🧀</span>
+        <span>MOZARELLA</span>
+      </div>
+      <span>350</span>
+    </div>
+    <div class="flex justify-between items-center bg-[#D4A373] text-white font-bold py-2 px-4 rounded-lg">
+      <div class="flex items-center space-x-2">
+        <span>🌸</span>
+        <span>FLOWER BOUQUET</span>
+      </div>
+      <span>150</span>
+    </div>
+  </div>
+  </div>
   </details>
 </div>
 
