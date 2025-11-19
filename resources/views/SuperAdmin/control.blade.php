@@ -29,7 +29,18 @@
         <a href="/access" class="hover:text-[#D4A373]">Access</a>
         <a href="/constraint" class="hover:text-[#D4A373]">Constraint</a>
       </nav>
-      <div class="text-[#DAD7CD]">SuperAdmin ▾</div>
+      <div class="relative">
+      <button onclick="toggleMenu()" class="text-[#DAD7CD] flex items-center gap-1">SuperAdmin▾</button>
+      <div id="dropdownMenu"
+          class="hidden absolute right-0 mt-2 bg-white text-black rounded-lg shadow-lg w-32">
+          <a href="/profile" class="block px-4 py-2 hover:bg-gray-200">Profile</a>
+          <form method="POST" action="/logout">
+              @csrf
+              <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-200">
+                  Logout
+              </button>
+          </form>
+      </div>
     </div>
   </div>
 
@@ -171,14 +182,10 @@
 
        <div class="w-11/12 mx-auto flex justify-between items-center mb-3">
         <form method="GET" action="/control" class="flex items-center gap-3">
-            <input 
-                type="text" 
-                name="search"
-                placeholder="Search..."
-                value="{{ request('search') }}"
-                class="border p-1 rounded-lg w-60 text-sm"
-                onkeyup="searchTable()"
-            >
+            <div class="flex items-center w-[450px] bg-white rounded-full shadow px-5 py-2 text-black">
+                <input type="text" placeholder="Search..." class="w-full outline-none px-2">
+                <span class="material-icons">search</span>
+            </div>
         </form>
         <button onclick="openAdd()" class="bg-green-600 text-white px-3 py-1 rounded-lg shadow text-sm">➕</button>
        </div>
@@ -225,6 +232,16 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
+
+    <div class="flex justify-end pr-20 mt-4 text-black">
+        <div class="flex items-center gap-2">
+            <button class="bg-white px-4 py-2 rounded shadow hover:bg-gray-100">Previous</button>
+            <button class="bg-white px-4 py-2 rounded shadow hover:bg-gray-100 font-bold">1</button>
+            <button class="bg-white px-4 py-2 rounded shadow hover:bg-gray-100">...</button>
+            <button class="bg-white px-4 py-2 rounded shadow hover:bg-gray-100">5</button>
+            <button class="bg-white px-4 py-2 rounded shadow hover:bg-gray-100">Next</button>
+        </div>
     </div>
 
     <div class="mt-auto bg-teal-900 text-white py-4 flex justify-around">

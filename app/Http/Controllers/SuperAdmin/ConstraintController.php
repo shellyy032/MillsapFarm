@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SuperAdminConstraintController extends Controller
+class ConstraintController extends Controller
 {
     public function index(Request $request)
     {

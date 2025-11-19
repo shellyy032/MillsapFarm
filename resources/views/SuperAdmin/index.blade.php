@@ -8,22 +8,20 @@
  </head>
 <body class="bg-teal-900 text-[#DAD7CD] font-sans">
 
-  <!-- navbar -->
   <div class="bg-teal-900 px-8 py-4 flex items-center justify-between shadow-lg">
     <div class="flex items-center">
       <img src="https://img1.wsimg.com/isteam/ip/f7e4c243-2df4-478a-8464-d92c4cab6ab7/Logo%20with%20outline.png/:/rs=w:505,h:178,cg:true,m/cr=w:505,h:178/qt=q:95" alt="Logo" class="h-12 object-contain">
     </div>
     <div class="flex items-center space-x-8">
       <nav class="flex space-x-8 text-[#DAD7CD]">
-        <a href="/" class="hover:text-[#D4A373]">Home</a>
+        <a href="/dashboard" class="hover:text-[#D4A373]">Home</a>
         <a href="/control" class="hover:text-[#D4A373]">Control</a>
         <a href="/report" class="hover:text-[#D4A373]">Report</a>
         <a href="/access" class="hover:text-[#D4A373]">Access</a>
         <a href="/constraint" class="hover:text-[#D4A373]">Constraint</a>
       </nav>
       <div class="relative">
-      <button onclick="toggleMenu()" class="text-[#DAD7CD] flex items-center gap-1">SuperAdmin▾
-      </button>
+      <button onclick="toggleMenu()" class="text-[#DAD7CD] flex items-center gap-1">SuperAdmin▾</button>
       <div id="dropdownMenu"
           class="hidden absolute right-0 mt-2 bg-white text-black rounded-lg shadow-lg w-32">
           <a href="/profile" class="block px-4 py-2 hover:bg-gray-200">Profile</a>

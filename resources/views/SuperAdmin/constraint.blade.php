@@ -21,7 +21,18 @@
             <a href="/constraint" class="hover:text-[#D4A373]">Constraint</a>
             <a href="/about" class="hover:text-[#D4A373]">About</a>
         </nav>
-        <div class="text-[#DAD7CD]">SuperAdmin ▾</div>
+        <div class="relative">
+            <button onclick="toggleMenu()" class="text-[#DAD7CD] flex items-center gap-1">SuperAdmin▾</button>
+            <div id="dropdownMenu"
+                class="hidden absolute right-0 mt-2 bg-white text-black rounded-lg shadow-lg w-32">
+                <a href="/profile" class="block px-4 py-2 hover:bg-gray-200">Profile</a>
+                <form method="POST" action="/logout">
+                    @csrf
+                    <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-200">
+                        Logout
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -64,6 +75,16 @@
             </tbody>
 
         </table>
+    </div>
+
+    <div class="flex justify-end pr-20 mt-4 text-black">
+        <div class="flex items-center gap-2">
+            <button class="bg-white px-4 py-2 rounded shadow hover:bg-gray-100">Previous</button>
+            <button class="bg-white px-4 py-2 rounded shadow hover:bg-gray-100 font-bold">1</button>
+            <button class="bg-white px-4 py-2 rounded shadow hover:bg-gray-100">...</button>
+            <button class="bg-white px-4 py-2 rounded shadow hover:bg-gray-100">5</button>
+            <button class="bg-white px-4 py-2 rounded shadow hover:bg-gray-100">Next</button>
+        </div>
     </div>
 
     <div class="mt-auto bg-teal-900 text-white py-4 flex justify-around font-semibold">

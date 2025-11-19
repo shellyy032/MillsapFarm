@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SuperAdminAccessController extends Controller
+class AccessController extends Controller
 {
     public function index(Request $request)
     {
