@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminTransactionController;
+use App\Http\Controllers\AdminReportController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -60,5 +61,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/transaction', [AdminTransactionController::class, 'index'])->name('transaction.index');
-Route::get('/transaction/create', [AdminTransactionController::class, 'create'])->name('transaction.create');
-Route::delete('/transaction/{id}/delete', [TransactionController::class, 'delete'])->name('transaction.delete');
+Route::post('/transaction/store', [AdminTransactionController::class, 'store'])->name('transaction.store');
+
+Route::get('/transaction/view/{id}', [AdminTransactionController::class, 'view'])->name('transaction.view');
+Route::get('/transaction/edit/{id}', [AdminTransactionController::class, 'edit'])->name('transaction.edit');
+Route::post('/transaction/update/{id}', [AdminTransactionController::class, 'update'])->name('transaction.update');
+
+Route::post('/transaction/delete/{id}', [AdminTransactionController::class, 'delete'])->name('transaction.delete');
+
+Route::get('/report', [AdminReportController::class, 'index'])->name('report.index');

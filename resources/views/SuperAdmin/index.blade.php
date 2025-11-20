@@ -849,9 +849,7 @@
   </div>
 
     <h2 class="text-lg font-bold tracking-widest mb-6">KERUGIAN</h2>
-
-    <div class="grid grid-cols-2 gap-4 items-start">
-  
+    <div class="grid grid-cols-2 gap-4 items-start"> 
     <div class="relative w-1/2 h-40 rounded-xl overflow-hidden ml-auto">
       <img src="https://media.timeout.com/images/105596022/image.jpg" 
           alt="Food" class="w-full h-full object-cover">
@@ -896,32 +894,32 @@
   </div>
   
   <h2 class="text-lg font-bold tracking-widest mt-10 mb-4 text-[#432818] text-center">BEST SELLER</h2>
-  <div class="space-y-3 w-2/3 mx-auto">
-    <div class="flex justify-between items-center bg-[#588157] text-white font-bold py-2 px-4 rounded-lg">
-      <div class="flex items-center space-x-2">
-        <span>🍕</span>
-        <span>PIZZA PEPPERONI</span>
+    <div class="space-y-3 w-2/3 mx-auto">
+      <div class="flex justify-between items-center bg-[#588157] text-white font-bold py-2 px-4 rounded-lg">
+        <div class="flex items-center space-x-2">
+          <span>🍕</span>
+          <span>PIZZA PEPPERONI</span>
+        </div>
+        <span>500</span>
       </div>
-      <span>500</span>
-    </div>
-    <div class="flex justify-between items-center bg-[#7F5539] text-white font-bold py-2 px-4 rounded-lg">
-      <div class="flex items-center space-x-2">
-        <span>🧀</span>
-        <span>MOZARELLA</span>
+      <div class="flex justify-between items-center bg-[#7F5539] text-white font-bold py-2 px-4 rounded-lg">
+        <div class="flex items-center space-x-2">
+          <span>🧀</span>
+          <span>MOZARELLA</span>
+        </div>
+        <span>350</span>
       </div>
-      <span>350</span>
-    </div>
-    <div class="flex justify-between items-center bg-[#D4A373] text-white font-bold py-2 px-4 rounded-lg">
-      <div class="flex items-center space-x-2">
-        <span>🌸</span>
-        <span>FLOWER BOUQUET</span>
+      <div class="flex justify-between items-center bg-[#D4A373] text-white font-bold py-2 px-4 rounded-lg">
+        <div class="flex items-center space-x-2">
+          <span>🌸</span>
+          <span>FLOWER BOUQUET</span>
+        </div>
+        <span>150</span>
       </div>
-      <span>150</span>
     </div>
+    </div>
+    </details>
   </div>
-  </div>
-  </details>
-</div>
 
   <script>
     function toggleMenu() {

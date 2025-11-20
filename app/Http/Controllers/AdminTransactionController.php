@@ -59,11 +59,6 @@ class AdminTransactionController extends Controller
         return view('Admin.transaction', compact('transactions'));
     }
 
-    public function create()
-    {
-        return view('Admin.transaction.create');
-    }
-
     public function delete($id)
     {
         return redirect()->route('transaction.index')->with('success', 'Transaction deleted');

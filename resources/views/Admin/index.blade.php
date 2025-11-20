@@ -19,8 +19,6 @@
                 <a href="/dashboard" class="hover:text-[#D4A373]">Home</a>
                 <a href="/control" class="hover:text-[#D4A373]">Control</a>
                 <a href="/report" class="hover:text-[#D4A373]">Report</a>
-                <a href="/access" class="hover:text-[#D4A373]">Access</a>
-                <a href="/constraint" class="hover:text-[#D4A373]">Constraint</a>
             </nav>
             <div class="relative">
             <button onclick="toggleMenu()" class="text-[#DAD7CD] flex items-center gap-1">Admin▾</button>
@@ -117,7 +115,6 @@
         <span class="w-2 h-2 bg-gray-300 rounded-full"></span>
     </div>
     </div>
-
 
     <div class="mt-0 space-y-1 w-full">
         <details class="w-full bg-[#A3B18A] cursor-pointer group overflow-hidden rounded-lg">

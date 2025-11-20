@@ -16,8 +16,6 @@
                 <a href="/dashboard" class="hover:text-[#D4A373]">Home</a>
                 <a href="/control" class="hover:text-[#D4A373]">Control</a>
                 <a href="/report" class="hover:text-[#D4A373]">Report</a>
-                <a href="/access" class="hover:text-[#D4A373]">Access</a>
-                <a href="/constraint" class="hover:text-[#D4A373]">Constraint</a>
             </nav>
             <div class="relative">
             <button onclick="toggleMenu()" class="text-[#DAD7CD] flex items-center gap-1">Admin▾</button>
@@ -42,21 +40,19 @@
     <div class="w-full bg-white h-screen rounded-t-[50%] -mt-32 flex flex-col items-center justify-start pt-10 shadow-lg">
         <h1 class="text-yellow-600 text-5xl font-extrabold tracking-wider">TRANSACTION LIST</h1>
 
-    <div class="flex justify-center mt-10 gap-6">
+    <div class="flex justify-center mt-4 gap-6">
         <div class="flex items-center w-[450px] bg-white rounded-full shadow px-5 py-2 text-black">
             <input type="text" placeholder="Search..." class="w-full outline-none px-2">
             <span class="material-icons">search</span>
         </div>
 
     <div class="flex justify-end gap-6 pr-20 mt-4">
-        <a href="#" class="p-2 bg-white text-black rounded-full shadow">🖨️</a>
-        <a href="{{ route('transaction.create') }}" class="p-2 bg-white text-black rounded-full shadow">➕</a>
-        <a href="#" class="p-2 bg-white text-black rounded-full shadow">🗂️</a>
+        <button onclick="openAdd()" class="p-2 bg-white text-black rounded-full shadow">➕</button>
     </div>
     </div>
 
-    <div class="w-full flex justify-center items-center bg-white text-white font-bold py-4 px-4 ">
-    <div class="flex justify-center mt-6 px-10">
+    <div class="w-full flex justify-center items-center bg-white font-bold py-4 px-4 ">
+    <div class="flex justify-center mt-2 px-10">
         <table class="w-full max-w-5xl bg-white text-black rounded-lg shadow-lg overflow-hidden">
             <thead class="bg-[#D9651A] text-white">
                 <tr>
@@ -78,8 +74,6 @@
                     <td class="py-3 px-4">{{ $t['username'] }}</td>
                     <td class="py-3 px-4">{{ $t['type'] }}</td>
                     <td class="py-3 px-4">Rp {{ number_format($t['price'], 0, ',', '.') }}</td>
-
-                    {{-- Status with color --}}
                     <td class="py-3 px-4">
                         @if ($t['status'] == 'Waiting')
                             <span class="text-yellow-600 font-bold">Waiting</span>
@@ -96,13 +90,29 @@
                     <td class="py-3 px-4">{{ $t['datetime'] }}</td>
 
                     <td class="py-2 border flex justify-center gap-3">
-                        <button onclick="openDetailTransaction('{{ $t['id'] }}')" class="text-green-600 text-xl">👁️</button>
-                        <button onclick="openEditTransaction('{{ $t['id'] }}')" class="text-blue-600 text-xl">✏️</button>
-                        <form action="{{ route('transaction.delete', ['id' => $t['id']]) }}" method="POST">
+                        <button onclick="openView(
+                                '{{ $t['username'] }}',
+                                '{{ $t['type'] }}',
+                                '{{ $t['price'] }}',
+                                '{{ $t['status'] }}',
+                                '{{ $t['payment'] }}',
+                                '{{ $t['datetime'] }}'
+                            )" class="text-yellow-600 text-xl">👁️</button>
+
+                        <button onclick="openEdit(
+                                '{{ $t['id'] }}',
+                                '{{ $t['username'] }}',
+                                '{{ $t['type'] }}',
+                                '{{ $t['price'] }}',
+                                '{{ $t['status'] }}',
+                                '{{ $t['payment'] }}'
+                            )" class="text-blue-600 text-xl">✏️</button>
+
+                        <form action="{{ route('transaction.delete', $t['id']) }}" method="POST">
                             @csrf
-                            @method('DELETE')
-                            <button class="text-red-600 text-xl" onclick="return confirm('Delete this transaction?')">🗑️</button>
+                            <button class="text-red-600 text-xl">🗑️</button>
                         </form>
+                    </td>
                     </td>
                 </tr>
                 @endforeach
@@ -121,20 +131,168 @@
         </div>
     </div>
 
+    <!-- add -->
+    <div id="addModal" class="hidden">
+        <div class="fixed inset-0 bg-black/50"></div>
+        <div class="fixed inset-0 flex justify-center items-center z-50">
+            <div class="bg-[#DAD7CD] p-8 rounded-xl w-[700px] max-h-[90vh] overflow-y-auto text-[#344E41] shadow-lg">
+                <h2 class="text-2xl font-bold mb-4">Add Transaction</h2>
+                <h3 class="text-xl font-semibold mb-3">Transaction Info</h3>
+                <label class="font-semibold">UserName</label>
+                <input type="text" name="username" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
+                <label class="font-semibold">Type of Order</label>
+                <input type="text" name="typeoforder" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
+                <label class="font-semibold">Date Time</label>
+                <input type="datetime-local" name="datetime" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
+                <h3 class="text-xl font-semibold mb-3 mt-4">Detail Transaction</h3>
+                <label class="font-semibold">List of Item</label>
+                <input type="text" name="listofitem" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
+                <label class="font-semibold">Total Transaction</label>
+                <input type="text" name="totaltransaction" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
+                <label class="block mb-1 font-semibold">Payment</label>
+                <div class="flex gap-3 mb-4">
+                    <label>
+                        <input type="radio" name="payment_status" value="Active" class="hidden" checked>
+                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#7FB77E] text-white">Paid</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="payment_status" value="Inactive" class="hidden">
+                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#A3B18A] text-[#344E41]">Pending</div>
+                    </label>
+                </div>
+                <label class="block mb-1 font-semibold">Method</label>
+                <div class="flex gap-3 mb-4">
+                    <label>
+                        <input type="radio" name="payment_method" value="PayPal" class="hidden" checked>
+                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#7FB77E] text-white">PayPal</div>
+                    </label>
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" onclick="closeAdd()" class="px-5 py-2 bg-gray-300 rounded">Cancel</button>
+                    <button class="px-5 py-2 bg-[#7FB77E] text-white rounded">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- edit -->
+    <div id="editModal" class="hidden fixed inset-0 bg-black/50 justify-center items-center z-50">
+        <div class="bg-[#DAD7CD] p-8 rounded-xl w-[700px] max-h-[90vh] overflow-y-auto text-[#344E41] shadow-lg">
+            <h2 class="text-2xl font-bold mb-4">Edit Transaction</h2>
+            <form id="editForm" method="POST">
+                @csrf
+                @method('PUT')
+                <h3 class="text-xl font-semibold mb-3">Transaction Info</h3>
+                <label class="font-semibold">UserName</label>
+                <input type="text" id="editUsername" name="username" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
+                <label class="font-semibold">Type of Order</label>
+                <input type="text" id="editTypeoforder" name="typeoforder" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
+                <label class="font-semibold">Date Time</label>
+                <input type="date" id="editDatetime" name="datetime" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
+                <h3 class="text-xl font-semibold mb-3 mt-4">Detail Transaction</h3>
+                <label class="font-semibold">List of Item</label>
+                <input type="text" id="editListofitem" name="listofitem" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
+                <label class="font-semibold">Total Transaction</label>
+                <input type="text" id="editTotaltransaction" name="totaltransaction" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
+                <label class="block mb-1 font-semibold">Payment</label>
+                <div class="flex gap-3 mb-4">
+                    <label>
+                        <input type="radio" id="editPaid" name="payment" value="Paid" class="hidden">
+                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#7FB77E] text-white">Paid</div>
+                    </label>
+                    <label>
+                        <input type="radio" id="editPending" name="payment" value="Pending" class="hidden">
+                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#A3B18A] text-[#344E41]">Pending</div>
+                    </label>
+                </div>
+                <label class="block mb-1 font-semibold">Method</label>
+                <div class="flex gap-3 mb-4">
+                    <label>
+                        <input type="radio" id="editPaypal" name="method" value="PayPal" class="hidden">
+                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#7FB77E] text-white">PayPal</div>
+                    </label>
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" onclick="closeEdit()" class="px-5 py-2 bg-gray-300 rounded">Cancel</button>
+                    <button class="px-5 py-2 rounded bg-blue-600 text-white">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- view -->
+    <div id="viewModal" class="hidden fixed inset-0 bg-black/50 justify-center items-center z-50">
+        <div class="bg-[#DAD7CD] p-8 rounded-xl w-[700px] max-h-[80vh] overflow-y-auto text-[#344E41] shadow-lg">
+            <h2 class="text-2xl font-bold mb-4">Transaction Details</h2>
+            <div class="space-y-2">
+                <p><strong>UserName:</strong> <span id="viewUsername"></span></p>
+                <p><strong>Type of Order:</strong> <span id="viewTypeoforder"></span></p>
+                <p><strong>Date Time:</strong> <span id="viewDatetime"></span></p>
+                <hr>
+                <p><strong>List of Item:</strong> <span id="viewListofitem"></span></p>
+                <p><strong>Total Transaction:</strong> <span id="viewTotaltransaction"></span></p>
+                <p><strong>Payment:</strong> <span id="viewPayment"></span></p>
+                <p><strong>Method:</strong> <span id="viewMethod"></span></p>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button onclick="closeView()" class="px-5 py-2 bg-gray-300 rounded">Close</button>
+            </div>
+        </div>
+    </div>
+
+
     <script>
-    function openDetailTransaction(id) {
-        alert("Detail transaksi: " + id);
-    }
+        function openAdd() {
+            let m = document.getElementById("addModal");
+            m.classList.remove("hidden");
+            m.classList.add("flex");
+        }
+        function closeAdd() {
+            let m = document.getElementById("addModal");
+            m.classList.add("hidden");
+            m.classList.remove("flex");
+        }
 
-    function openEditTransaction(id) {
-        alert("Edit transaksi: " + id);
-    }
+        function openEdit(data) {
+            let m = document.getElementById("editModal");
+            m.classList.remove("hidden");
+            m.classList.add("flex");
+            document.getElementById("editUsername").value = data.username;
+            document.getElementById("editTypeoforder").value = data.typeoforder;
+            document.getElementById("editDatetime").value = data.datetime;
+            document.getElementById("editListofitem").value = data.listofitem;
+            document.getElementById("editTotaltransaction").value = data.totaltransaction;
+            if (data.payment === "Paid") document.getElementById("editPaid").checked = true;
+            else document.getElementById("editPending").checked = true;
+            if (data.method === "PayPal") document.getElementById("editPaypal").checked = true;
+            document.getElementById("editForm").action = `/transaction/${data.id}/update`;
+        }
 
-    function openAdd(type) {
-        alert("Tambah " + type);
-    }
+        function closeEdit() {
+            let m = document.getElementById("editModal");
+            m.classList.add("hidden");
+            m.classList.remove("flex");
+        }
+
+        function openView(data) {
+            let m = document.getElementById("viewModal");
+            m.classList.remove("hidden");
+            m.classList.add("flex");
+            document.getElementById("viewUsername").innerText = data.username;
+            document.getElementById("viewTypeoforder").innerText = data.typeoforder;
+            document.getElementById("viewDatetime").innerText = data.datetime;
+            document.getElementById("viewListofitem").innerText = data.listofitem;
+            document.getElementById("viewTotaltransaction").innerText = data.totaltransaction;
+            document.getElementById("viewPayment").innerText = data.payment;
+            document.getElementById("viewMethod").innerText = data.method;
+        }
+
+        function closeView() {
+            let m = document.getElementById("viewModal");
+            m.classList.add("hidden");
+            m.classList.remove("flex");
+        }
     </script>
-
-
 </body>
 </html>

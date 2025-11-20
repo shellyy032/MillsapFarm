@@ -42,7 +42,6 @@
     </div>
 
     <h1 class="text-center text-6xl font-extrabold text-yellow-600 mt-8 tracking-wider">REPORT PRODUK</h1>
-
     <div class="w-11/12 mx-auto mt-4 bg-teal-900 p-3 rounded-xl flex justify-center gap-20 text-white font-semibold">
         <a href="?role=PRODUK" class="px-6 py-2 rounded-t-xl {{ $currentRole == 'PRODUK' ? 'bg-white text-orange-600 font-semibold' : 'text-white' }}">PRODUCT</a>
         <a href="?role=TRANSAKSI" class="px-6 py-2 rounded-t-xl {{ $currentRole == 'TRANSAKSI' ? 'bg-white text-orange-600 font-semibold' : 'text-white' }}">TRANSACTION</a>

@@ -61,16 +61,12 @@
                     @csrf
                     <div class="space-y-3">
                         <h3 class="font-semibold mb-4 text-[#344E41]">Account Information</h3>
-
                         <label class="block mb-1 text-[#344E41]">User ID</label>
                         <input type="text" name="user_id" class="w-full p-2 rounded bg-[#7FB77E] text-white outline-none mb-3" required>
-
                         <label class="block mb-1 text-[#344E41]">UserName</label>
                         <input type="text" name="username" class="w-full p-2 rounded bg-[#7FB77E] text-white outline-none mb-3" required>
-
                         <label class="block mb-1 text-[#344E41]">Email</label>
                         <input type="email" name="email" class="w-full p-2 rounded bg-[#7FB77E] text-white outline-none mb-3" required>
-
                         <label class="block mb-1 text-[#344E41]">Status</label>
                         <div class="flex gap-3 mb-3">
                         <label>
@@ -82,54 +78,31 @@
                             <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#A3B18A] text-[#344E41]">Passive</div>
                         </label>
                     </div>
-
                         <label class="block mb-1 text-[#344E41]">Password</label>
                         <input type="password" name="password"
                             class="w-full p-2 rounded bg-[#7FB77E] text-white outline-none mb-3" required>
-
                         <label class="block mb-1 text-[#344E41]">Confirm Password</label>
                         <input type="password" name="password_confirmation"
                             class="w-full p-2 rounded bg-[#7FB77E] text-white outline-none mb-3" required>
                     </div>
-
                     <div class="mt-6">
                         <h3 class="font-semibold mb-4 text-[#344E41]">Role</h3>
-
                         <div class="flex gap-3 mb-6 flex-wrap">
                         <label>
-                            <input type="radio" name="role" value="USER" class="hidden"
-                                {{ $role == 'USER' ? 'checked' : '' }}>
-                            <div class="px-6 py-2 rounded-lg cursor-pointer 
-                                {{ $role == 'USER' ? 'bg-[#BC6C25] text-white' : 'bg-[#A3B18A] text-[#344E41]' }}">
-                                USER
-                            </div>
+                            <input type="radio" name="role" value="USER" class="hidden"{{ $role == 'USER' ? 'checked' : '' }}>
+                            <div class="px-6 py-2 rounded-lg cursor-pointer {{ $role == 'USER' ? 'bg-[#BC6C25] text-white' : 'bg-[#A3B18A] text-[#344E41]' }}">USER</div>
                         </label>
-
                         <label>
-                            <input type="radio" name="role" value="ADMIN" class="hidden"
-                                {{ $role == 'ADMIN' ? 'checked' : '' }}>
-                            <div class="px-6 py-2 rounded-lg cursor-pointer 
-                                {{ $role == 'ADMIN' ? 'bg-[#BC6C25] text-white' : 'bg-[#A3B18A] text-[#344E41]' }}">
-                                ADMIN
-                            </div>
+                            <input type="radio" name="role" value="ADMIN" class="hidden" {{ $role == 'ADMIN' ? 'checked' : '' }}>
+                            <div class="px-6 py-2 rounded-lg cursor-pointer {{ $role == 'ADMIN' ? 'bg-[#BC6C25] text-white' : 'bg-[#A3B18A] text-[#344E41]' }}">ADMIN</div>
                         </label>
-
                         <label>
-                            <input type="radio" name="role" value="KURIR" class="hidden"
-                                {{ $role == 'KURIR' ? 'checked' : '' }}>
-                            <div class="px-6 py-2 rounded-lg cursor-pointer 
-                                {{ $role == 'KURIR' ? 'bg-[#BC6C25] text-white' : 'bg-[#A3B18A] text-[#344E41]' }}">
-                                KURIR
-                            </div>
+                            <input type="radio" name="role" value="KURIR" class="hidden" {{ $role == 'KURIR' ? 'checked' : '' }}>
+                            <div class="px-6 py-2 rounded-lg cursor-pointer {{ $role == 'KURIR' ? 'bg-[#BC6C25] text-white' : 'bg-[#A3B18A] text-[#344E41]' }}">KURIR</div>
                         </label>
-
                         <label>
-                            <input type="radio" name="role" value="SUPERVISOR" class="hidden"
-                                {{ $role == 'SUPERVISOR' ? 'checked' : '' }}>
-                            <div class="px-6 py-2 rounded-lg cursor-pointer 
-                                {{ $role == 'SUPERVISOR' ? 'bg-[#BC6C25] text-white' : 'bg-[#A3B18A] text-[#344E41]' }}">
-                                SUPERVISOR
-                            </div>
+                            <input type="radio" name="role" value="SUPERVISOR" class="hidden" {{ $role == 'SUPERVISOR' ? 'checked' : '' }}>
+                            <div class="px-6 py-2 rounded-lg cursor-pointer {{ $role == 'SUPERVISOR' ? 'bg-[#BC6C25] text-white' : 'bg-[#A3B18A] text-[#344E41]' }}">SUPERVISOR</div>
                         </label>
                     </div>
 
@@ -201,29 +174,40 @@
                     <th class="py-2 border">Aksi</th>
                 </tr>
             </thead>
-
             <tbody>
                 @forelse ($users as $u)
                 <tr>
                     <td class="py-2 border">{{ $u['id_user'] }}</td>
                     <td class="py-2 border">{{ $u['nama_pengguna'] }}</td>
                     <td class="py-2 border text-blue-600">{{ $u['email'] }}</td>
-
                     <td class="py-2 border">
                         <span class="{{ $u['status'] == 'Active' ? 'text-green-600' : 'text-red-600' }}">
                             {{ $u['status'] }}
                         </span>
                     </td>
-
                     <td class="py-2 border">{{ $u['created_at'] }}</td>
-
-                    <td class="py-2 border flex justify-center gap-3">
-                        <button onclick="openEdit({{ $u['id_user'] }}, '{{ $u['nama_pengguna'] }}', '{{ $u['email'] }}')" class="text-blue-600 text-lg">✏️</button>
-                        <form action="{{ route('control.delete', ['role' => $role, 'id' => $u['id_user']]) }}" method="POST">
-                            @csrf
-                            <button class="text-red-600 text-lg" onclick="return confirm('Hapus user ini?')">🗑️</button>
+                    <button onclick="openViewTransaction(
+                            '{{ $t['username'] }}',
+                            '{{ $t['type'] }}',
+                            '{{ $t['price'] }}',
+                            '{{ $t['status'] }}',
+                            '{{ $t['payment'] }}',
+                            '{{ $t['datetime'] }}'
+                        )" class="text-yellow-600 text-xl">👁️
+                    </button>
+                     <button onclick="openEditTransaction(
+                            '{{ $t['id'] }}',
+                            '{{ $t['username'] }}',
+                            '{{ $t['type'] }}',
+                            '{{ $t['price'] }}',
+                            '{{ $t['status'] }}',
+                            '{{ $t['payment'] }}'
+                        )" class="text-blue-600 text-xl">✏️
+                    </button>
+                    <form action="{{ route('transaction.delete', $t['id']) }}" method="POST">
+                        @csrf
+                        <button class="text-red-600 text-xl">🗑️</button>
                     </form>
-                    </td>
                 </tr>
                 @empty
                 <tr>
@@ -252,35 +236,53 @@
     </div>
 
     <script>
-        function openAdd() {
-            let m = document.getElementById("addModal");
+        function openAddTransaction() {
+            let m = document.getElementById("transactionAddModal");
             m.classList.remove("hidden");
             m.classList.add("flex");
         }
-    
-        function closeAdd() {
-            let m = document.getElementById("addModal");
+
+        function closeAddTransaction() {
+            let m = document.getElementById("transactionAddModal");
             m.classList.add("hidden");
             m.classList.remove("flex");
         }
 
-        function openEdit(id, nama, email) {
-            let m = document.getElementById("editModal");
+        function openEditTransaction(id, username, type, price, status, payment) {
+            let m = document.getElementById("transactionEditModal");
             m.classList.remove("hidden");
             m.classList.add("flex");
-
-            document.getElementById("editNama").value = nama;
-            document.getElementById("editEmail").value = email;
-
-            document.getElementById("editForm").action = `/control/${id}/update`;
+            document.getElementById("editUsername").value = username;
+            document.getElementById("editType").value = type;
+            document.getElementById("editPrice").value = price;
+            document.getElementById("editStatus").value = status;
+            document.getElementById("editPayment").value = payment;
+            document.getElementById("transactionEditForm").action = `/report/transaction/edit/${id}`;
         }
 
-        function closeEdit() {
-            let m = document.getElementById("editModal");
+        function closeEditTransaction() {
+            let m = document.getElementById("transactionEditModal");
+            m.classList.add("hidden");
+            m.classList.remove("flex");
+        }
+
+        function openViewTransaction(username, type, price, status, payment, datetime) {
+            let m = document.getElementById("transactionViewModal");
+            m.classList.remove("hidden");
+            m.classList.add("flex");
+            document.getElementById("viewUsername").innerText = username;
+            document.getElementById("viewType").innerText = type;
+            document.getElementById("viewPrice").innerText = price;
+            document.getElementById("viewStatus").innerText = status;
+            document.getElementById("viewPayment").innerText = payment;
+            document.getElementById("viewDatetime").innerText = datetime;
+        }
+
+        function closeViewTransaction() {
+            let m = document.getElementById("transactionViewModal");
             m.classList.add("hidden");
             m.classList.remove("flex");
         }
     </script>
-
 </body>
 </html>
