@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Transaction</title>
+    <title>Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
