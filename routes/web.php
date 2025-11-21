@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminReportController;
 use App\Http\Controllers\SuperVisorDashboardController;
 use App\Http\Controllers\SuperVisorProductionController;
 use App\Http\Controllers\SuperVisorOrderController;
+use App\Http\Controllers\SuperVisorManageController;
 use Illuminate\Support\Facades\Route;
 
 // SUPERADMIN
@@ -85,3 +86,5 @@ Route::post('/production/update/{id}', [SuperVisorProductionController::class, '
 
 Route::get('/order', [SuperVisorOrderController::class, 'index'])->name('order.index');
 Route::get('/order/view/{id}', [SuperVisorOrderController::class, 'view'])->name('supervisor.order.view');
+
+Route::get('/manage', [SuperVisorManageController::class, 'index'])->name('manage.index');

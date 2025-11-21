@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SuperVisororderController extends Controller
+class SuperVisorOrderController extends Controller
 {
     public function index()
     {
