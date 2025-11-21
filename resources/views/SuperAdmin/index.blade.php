@@ -254,28 +254,6 @@
     <canvas id="lineChart" width="400" height="0"></canvas>
     <canvas id="pieChart" width="400" height="0"></canvas>
     <script>
-      new Chart(document.getElementById('lineChart'), {
-        type: 'line',
-        data: {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-          datasets: [{
-            label: 'Revenue ($M)',
-            data: [10, 15, 27, 32, 40, 45],
-            borderColor: '#D4A373',
-            backgroundColor: '#D4A37333',
-            fill: true,
-            tension: 0.4
-          }]
-        },
-        options: {
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { type: 'category', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } },
-            y: { type: 'linear', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } }
-          }
-        }
-      });
-
       new Chart(document.getElementById('pieChart'), {
         type: 'doughnut',
         data: {
@@ -431,28 +409,6 @@
     <canvas id="lineChart" width="400" height="0"></canvas>
     <canvas id="pieChart" width="400" height="0"></canvas>
     <script>
-      new Chart(document.getElementById('lineChart'), {
-        type: 'line',
-        data: {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-          datasets: [{
-            label: 'Revenue ($M)',
-            data: [10, 15, 27, 32, 40, 45],
-            borderColor: '#D4A373',
-            backgroundColor: '#D4A37333',
-            fill: true,
-            tension: 0.4
-          }]
-        },
-        options: {
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { type: 'category', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } },
-            y: { type: 'linear', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } }
-          }
-        }
-      });
-
       new Chart(document.getElementById('pieChart'), {
         type: 'doughnut',
         data: {
@@ -608,28 +564,6 @@
     <canvas id="lineChart" width="400" height="0"></canvas>
     <canvas id="pieChart" width="400" height="0"></canvas>
     <script>
-      new Chart(document.getElementById('lineChart'), {
-        type: 'line',
-        data: {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-          datasets: [{
-            label: 'Revenue ($M)',
-            data: [10, 15, 27, 32, 40, 45],
-            borderColor: '#D4A373',
-            backgroundColor: '#D4A37333',
-            fill: true,
-            tension: 0.4
-          }]
-        },
-        options: {
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { type: 'category', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } },
-            y: { type: 'linear', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } }
-          }
-        }
-      });
-
       new Chart(document.getElementById('pieChart'), {
         type: 'doughnut',
         data: {
@@ -744,7 +678,7 @@
   </div>
   </div>
   </details>
-
+  
   <div class="mt-4 space-y-3 w-full">
     <details class="w-full bg-[#D4A373] cursor-pointer group overflow-hidden rounded-lg">
     <summary class="block w-full list-none flex justify-between items-center font-semibold text-gray-800 p-4">
@@ -785,28 +719,6 @@
     <canvas id="lineChart" width="400" height="0"></canvas>
     <canvas id="pieChart" width="400" height="0"></canvas>
     <script>
-      new Chart(document.getElementById('lineChart'), {
-        type: 'line',
-        data: {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-          datasets: [{
-            label: 'Revenue ($M)',
-            data: [10, 15, 27, 32, 40, 45],
-            borderColor: '#D4A373',
-            backgroundColor: '#D4A37333',
-            fill: true,
-            tension: 0.4
-          }]
-        },
-        options: {
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { type: 'category', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } },
-            y: { type: 'linear', ticks: { color: '#51741bff' }, grid: { color: '#475B52' } }
-          }
-        }
-      });
-
       new Chart(document.getElementById('pieChart'), {
         type: 'doughnut',
         data: {

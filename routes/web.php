@@ -11,8 +11,10 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminTransactionController;
 use App\Http\Controllers\AdminReportController;
+use App\Http\Controllers\SuperVisorDashboardController;
 use Illuminate\Support\Facades\Route;
 
+// SUPERADMIN
 // Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 // Route::post('/login', [LoginController::class, 'login']);
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -58,15 +60,18 @@ use Illuminate\Support\Facades\Route;
 //     return redirect()->route('SuperAdmin.index');
 // })->middleware('auth');
 
-Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+// ADMIN
+// Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/transaction', [AdminTransactionController::class, 'index'])->name('transaction.index');
-Route::post('/transaction/store', [AdminTransactionController::class, 'store'])->name('transaction.store');
+// Route::get('/transaction', [AdminTransactionController::class, 'index'])->name('transaction.index');
+// Route::post('/transaction/store', [AdminTransactionController::class, 'store'])->name('transaction.store');
 
-Route::get('/transaction/view/{id}', [AdminTransactionController::class, 'view'])->name('transaction.view');
-Route::get('/transaction/edit/{id}', [AdminTransactionController::class, 'edit'])->name('transaction.edit');
-Route::post('/transaction/update/{id}', [AdminTransactionController::class, 'update'])->name('transaction.update');
+// Route::get('/transaction/view/{id}', [AdminTransactionController::class, 'view'])->name('transaction.view');
+// Route::get('/transaction/edit/{id}', [AdminTransactionController::class, 'edit'])->name('transaction.edit');
+// Route::post('/transaction/update/{id}', [AdminTransactionController::class, 'update'])->name('transaction.update');
 
-Route::post('/transaction/delete/{id}', [AdminTransactionController::class, 'delete'])->name('transaction.delete');
+// Route::post('/transaction/delete/{id}', [AdminTransactionController::class, 'delete'])->name('transaction.delete');
 
-Route::get('/report', [AdminReportController::class, 'index'])->name('report.index');
+// Route::get('/report', [AdminReportController::class, 'index'])->name('report.index');
+
+Route::get('/dashboard', [SuperVisorDashboardController::class, 'index'])->name('dashboard');
