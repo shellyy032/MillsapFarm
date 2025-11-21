@@ -13,6 +13,7 @@ use App\Http\Controllers\AdminTransactionController;
 use App\Http\Controllers\AdminReportController;
 use App\Http\Controllers\SuperVisorDashboardController;
 use App\Http\Controllers\SuperVisorProductionController;
+use App\Http\Controllers\SuperVisorOrderController;
 use Illuminate\Support\Facades\Route;
 
 // SUPERADMIN
@@ -81,3 +82,6 @@ Route::get('/production', [SuperVisorProductionController::class, 'index'])->nam
 Route::post('/production/add', [SuperVisorProductionController::class, 'add'])->name('production.add');
 Route::post('/production/delete-multiple', [SuperVisorProductionController::class, 'deleteMultiple'])->name('production.deleteMultiple');
 Route::post('/production/update/{id}', [SuperVisorProductionController::class, 'update'])->name('production.update');
+
+Route::get('/order', [SuperVisorOrderController::class, 'index'])->name('order.index');
+Route::get('/order/view/{id}', [SuperVisorOrderController::class, 'view'])->name('supervisor.order.view');

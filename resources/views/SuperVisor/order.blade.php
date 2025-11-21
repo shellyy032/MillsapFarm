@@ -46,9 +46,8 @@
                 <input type="text" placeholder="Search..." class="w-[250px] outline-none px-2">
                 <span class="material-icons">search</span>
             </div>
-            <button onclick="openAdd()" class="p-2 bg-white text-black rounded-full shadow">➕</button>
-            <button onclick="openEdit()" class="p-2 bg-white text-black rounded-full shadow">✏️</button>
-            <button onclick="deleteItem()" class="p-2 bg-white text-black rounded-full shadow">🗑️</button>
+            <button onclick="handleView()" class="p-2 bg-white text-black rounded-full shadow">👁️</button>
+            <button onclick="openSort()" class="p-2 bg-white text-black rounded-full shadow">🔽</button>
         </div>
     </div>
 
@@ -71,7 +70,15 @@
             </thead>
             <tbody>
                 @foreach ($production as $p)
-                <tr class="border-b text-center">
+                <tr class="border-b text-center"
+                    data-id="{{ $p['id'] }}"
+                    data-name="{{ $p['name'] }}"
+                    data-stock="{{ $p['stock'] }}"
+                    data-status="{{ $p['status'] }}"
+                    data-productiondate="{{ $p['productiondate'] }}"
+                    data-expdate="{{ $p['expdate'] }}"
+                    data-note="{{ $p['note'] }}"
+                >
                     <td class="py-3 px-4">
                         <input type="checkbox" name="selected[]" value="{{ $p['id'] }}" class="rowCheck">
                     </td>
@@ -93,6 +100,7 @@
                     <td class="py-3 px-4">{{ $p['expdate'] }}</td>
                     <td class="py-3 px-4">{{ $p['note'] }}</td>
                 </tr>
+
                 @endforeach
             </tbody>
         </table>
@@ -108,187 +116,120 @@
         </div>
     </div>
 
-    <!-- add -->
-    <div id="addModal" class="hidden">
-        <div class="fixed inset-0 bg-black/50"></div>
-        <div class="fixed inset-0 flex justify-center items-center z-50">
-            <div class="bg-[#DAD7CD] p-8 rounded-xl w-[700px] max-h-[90vh] overflow-y-auto text-[#344E41] shadow-lg">
-                <h2 class="text-2xl font-bold mb-4">Add Transaction</h2>
-                <h3 class="text-xl font-semibold mb-3">Transaction Info</h3>
-                <label class="font-semibold">UserName</label>
-                <input type="text" name="username" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
-                <label class="font-semibold">Type of Order</label>
-                <input type="text" name="typeoforder" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
-                <label class="font-semibold">Date Time</label>
-                <input type="datetime-local" name="datetime" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
-                <h3 class="text-xl font-semibold mb-3 mt-4">Detail Transaction</h3>
-                <label class="font-semibold">List of Item</label>
-                <input type="text" name="listofitem" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
-                <label class="font-semibold">Total Transaction</label>
-                <input type="text" name="totaltransaction" class="w-full p-3 rounded bg-[#7FB77E] text-white mb-3 outline-none">
-                <label class="block mb-1 font-semibold">Payment</label>
-                <div class="flex gap-3 mb-4">
-                    <label>
-                        <input type="radio" name="payment_status" value="Active" class="hidden" checked>
-                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#7FB77E] text-white">Paid</div>
-                    </label>
-                    <label>
-                        <input type="radio" name="payment_status" value="Inactive" class="hidden">
-                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#A3B18A] text-[#344E41]">Pending</div>
-                    </label>
-                </div>
-                <label class="block mb-1 font-semibold">Method</label>
-                <div class="flex gap-3 mb-4">
-                    <label>
-                        <input type="radio" name="payment_method" value="PayPal" class="hidden" checked>
-                        <div class="px-4 py-2 rounded-lg cursor-pointer bg-[#7FB77E] text-white">PayPal</div>
-                    </label>
-                </div>
-                <div class="flex justify-end gap-3 mt-6">
-                    <button type="button" onclick="closeAdd()" class="px-5 py-2 bg-gray-300 rounded">Cancel</button>
-                    <button class="px-5 py-2 bg-[#7FB77E] text-white rounded">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- edit -->
-    <div id="editModal" class="hidden fixed inset-0 bg-black/50 justify-center items-center z-50">
-    <div class="bg-[#DAD7CD] p-8 rounded-xl w-[700px] max-h-[90vh] overflow-y-auto text-[#344E41] shadow-lg">
-        <h2 class="text-2xl font-bold mb-4">EDIT PRODUCTION</h2>
-        <form id="editForm" method="POST">
-            @csrf
-            @method('PUT') 
+    <!-- view -->
+    <div id="viewModal" class="hidden fixed inset-0 bg-black/50 justify-center items-center z-50">
+        <div class="bg-[#DAD7CD] p-8 rounded-xl w-[700px] max-h-[90vh] overflow-y-auto text-[#344E41] shadow-lg">
+            <h2 class="text-2xl font-bold mb-4">VIEW PRODUCTION</h2>
             <h3 class="text-xl font-semibold mb-4">Product Information</h3>
             <div class="mb-3">
                 <label class="font-semibold">ID_Product</label>
-                <input type="text" id="id" class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
+                <input type="text" id="view_id" readonly class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
             </div>
             <div class="grid grid-cols-2 gap-5">
                 <div>
                     <label class="font-semibold">Nama Produk</label>
-                    <input type="text" id="name" class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
+                    <input type="text" id="view_name" readonly class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
                 </div>
-
                 <div>
                     <label class="font-semibold">Status</label>
-                    <div class="flex rounded overflow-hidden border border-[#B5B58A]">
-                        <button type="button" class="flex-1 py-2 bg-[#3A5A40] text-white text-center">Active</button>
-                        <button type="button" class="flex-1 py-2 bg-white text-[#4C4C2E] text-center">Passive</button>
-                    </div>
+                    <input type="text" id="view_status" readonly class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-5 mt-4">
                 <div>
                     <label class="font-semibold">Production Date</label>
-                    <input type="date" id="production_date" class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
+                    <input type="date" id="view_production_date" readonly class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
                 </div>
-
                 <div>
                     <label class="font-semibold">Price</label>
-                    <input type="text" id="price" class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
+                    <input type="text" id="view_price" readonly class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-5 mt-4">
                 <div>
                     <label class="font-semibold">Image</label>
-                    <div class="flex items-center gap-3">
-                        <button class="px-4 py-2 bg-[#3A5A40] rounded text-white">Upload PNG/PDF/JPG</button>
-                        <input type="file" class="text-sm">
-                    </div>
+                    <input type="text" id="view_image" readonly class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
                 </div>
-
                 <div>
                     <label class="font-semibold">Stok</label>
-                    <select id="stock" class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
-                        <option>1</option>
-                        <option>5</option>
-                        <option>10</option>
-                        <option>24</option>
-                    </select>
+                    <input type="text" id="view_stock" readonly class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
                 </div>
             </div>
             <div class="mt-4">
                 <label class="font-semibold">Description</label>
-                <textarea id="desc" rows="4" class="w-full p-4 rounded bg-[#3A5A40] text-white outline-none"></textarea>
+                <textarea id="view_desc" rows="4" readonly class="w-full p-4 rounded bg-[#3A5A40] text-white outline-none"></textarea>
             </div>
             <div class="grid grid-cols-2 gap-5 mt-4">
                 <div>
                     <label class="font-semibold">Note</label>
-                    <input type="text" id="note" class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
+                    <input type="text" id="view_note" readonly class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
                 </div>
                 <div>
                     <label class="font-semibold">Long Last</label>
-                    <input type="text" id="shelf" class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
+                    <input type="text" id="view_shelf" readonly class="w-full p-3 rounded bg-[#3A5A40] text-white outline-none">
                 </div>
             </div>
             <div class="flex justify-end gap-3 mt-6">
-                <button type="button" onclick="closeEdit()" class="px-5 py-2 bg-[#C17F5C] rounded text-white">Cancel</button>
-                <button class="px-5 py-2 bg-[#B3541E] rounded text-white">Update</button>
+                <button type="button" onclick="closeView()" class="px-5 py-2 bg-[#C17F5C] rounded text-white">Back</button>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+
 
     <script>
-        function openAdd() {
-            let m = document.getElementById("addModal");
-            m.classList.remove("hidden");
-            m.classList.add("flex");
-        }
-        function closeAdd() {
-            let m = document.getElementById("addModal");
-            m.classList.add("hidden");
-            m.classList.remove("flex");
-        }
-
-        function openEdit(data) {
-            let m = document.getElementById("editModal");
-            m.classList.remove("hidden");
-            m.classList.add("flex");
-            document.getElementById("editUsername").value = data.username;
-            document.getElementById("editTypeoforder").value = data.typeoforder;
-            document.getElementById("editDatetime").value = data.datetime;
-            document.getElementById("editListofitem").value = data.listofitem;
-            document.getElementById("editTotaltransaction").value = data.totaltransaction;
-            if (data.payment === "Paid") document.getElementById("editPaid").checked = true;
-            else document.getElementById("editPending").checked = true;
-            if (data.method === "PayPal") document.getElementById("editPaypal").checked = true;
-            document.getElementById("editForm").action = `/transaction/${data.id}/update`;
-        }
-
-        function closeEdit() {
-            let m = document.getElementById("editModal");
-            m.classList.add("hidden");
-            m.classList.remove("flex");
-        }
-
-        function toggleAll(source) {
-            let boxes = document.querySelectorAll('.rowCheck');
-            boxes.forEach(b => b.checked = source.checked);
-        }
-
-        function deleteItem() {
-            let selected = [...document.querySelectorAll('.rowCheck:checked')].map(e => e.value);
-
-            if (selected.length === 0) {
-                alert("Tidak ada item yang dipilih.");
+        function handleView() {
+            const checks = document.querySelectorAll('.rowCheck:checked');
+            if (checks.length !== 1) {
+                alert('Pilih tepat satu data untuk view.');
                 return;
             }
 
-            if (!confirm("Yakin hapus item terpilih?")) return;
+            const id = checks[0].value;
 
-            fetch("/production/delete-multiple", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                },
-                body: JSON.stringify({ ids: selected })
-            })
-            .then(r => r.json())
-            .then(res => location.reload());
+            const row = document.querySelector(`tr[data-id="${id}"]`);
+            if (!row) return;
+
+            document.getElementById('view_id').value = row.dataset.id;
+            document.getElementById('view_name').value = row.dataset.name;
+            document.getElementById('view_status').value = row.dataset.status;
+            document.getElementById('view_production_date').value = row.dataset.productiondate;
+            document.getElementById('view_stock').value = row.dataset.stock;
+            document.getElementById('view_note').value = row.dataset.note;
+            document.getElementById('view_shelf').value = row.dataset.expdate;
+            document.getElementById('view_price').value = "-";
+            document.getElementById('view_image').value = "-";
+            document.getElementById('view_desc').value = "-";
+            openView();
+        }
+
+        function openView() {
+            document.getElementById('viewModal').classList.remove('hidden');
+        }
+
+        function closeView() {
+            document.getElementById('viewModal').classList.add('hidden');
+        }
+
+        function parseDate(d) {
+            let [dd, mm, yy] = d.split("/");
+            return new Date(`${yy}-${mm}-${dd}`);
+        }
+
+        function openSort() {
+            let rows = [...document.querySelectorAll("tbody tr")];
+
+            rows.sort((a, b) => {
+                let dateA = parseDate(a.children[5].innerText);
+                let dateB = parseDate(b.children[5].innerText);
+                return dateB - dateA;
+            });
+
+            let tbody = document.querySelector("tbody");
+            tbody.innerHTML = "";
+            rows.forEach(r => tbody.appendChild(r));
         }
     </script>
 </body>
 </html>
+
+
