@@ -15,9 +15,12 @@ use App\Http\Controllers\SuperVisorDashboardController;
 use App\Http\Controllers\SuperVisorProductionController;
 use App\Http\Controllers\SuperVisorOrderController;
 use App\Http\Controllers\SuperVisorManageController;
+use App\Http\Controllers\KurirDashboardController;
+use App\Http\Controllers\KurirOrderController;
+use App\Http\Controllers\KurirUpdateController;
 use Illuminate\Support\Facades\Route;
 
-// SUPERADMIN
+
 // Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 // Route::post('/login', [LoginController::class, 'login']);
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -28,6 +31,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/register', [RegisterController::class, 'showRegister'])->name('register');
 // Route::post('/register', [RegisterController::class, 'register']);
 
+
+//SuperAdmin
 // Route::prefix('superadmin')->middleware('auth')->group(function () {
 //     Route::get('/', [DashboardController::class, 'index'])->name('SuperAdmin.dashboard');
 
@@ -63,28 +68,38 @@ use Illuminate\Support\Facades\Route;
 //     return redirect()->route('SuperAdmin.index');
 // })->middleware('auth');
 
+
 // ADMIN
 // Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
 // Route::get('/transaction', [AdminTransactionController::class, 'index'])->name('transaction.index');
 // Route::post('/transaction/store', [AdminTransactionController::class, 'store'])->name('transaction.store');
-
 // Route::get('/transaction/view/{id}', [AdminTransactionController::class, 'view'])->name('transaction.view');
 // Route::get('/transaction/edit/{id}', [AdminTransactionController::class, 'edit'])->name('transaction.edit');
 // Route::post('/transaction/update/{id}', [AdminTransactionController::class, 'update'])->name('transaction.update');
-
 // Route::post('/transaction/delete/{id}', [AdminTransactionController::class, 'delete'])->name('transaction.delete');
 
 // Route::get('/report', [AdminReportController::class, 'index'])->name('report.index');
 
-Route::get('/dashboard', [SuperVisorDashboardController::class, 'index'])->name('dashboard');
+
+//SuperVisor
+// Route::get('/dashboard', [SuperVisorDashboardController::class, 'index'])->name('dashboard');
  
-Route::get('/production', [SuperVisorProductionController::class, 'index'])->name('production.index');
-Route::post('/production/add', [SuperVisorProductionController::class, 'add'])->name('production.add');
-Route::post('/production/delete-multiple', [SuperVisorProductionController::class, 'deleteMultiple'])->name('production.deleteMultiple');
-Route::post('/production/update/{id}', [SuperVisorProductionController::class, 'update'])->name('production.update');
+// Route::get('/production', [SuperVisorProductionController::class, 'index'])->name('production.index');
+// Route::post('/production/add', [SuperVisorProductionController::class, 'add'])->name('production.add');
+// Route::post('/production/delete-multiple', [SuperVisorProductionController::class, 'deleteMultiple'])->name('production.deleteMultiple');
+// Route::post('/production/update/{id}', [SuperVisorProductionController::class, 'update'])->name('production.update');
 
-Route::get('/order', [SuperVisorOrderController::class, 'index'])->name('order.index');
-Route::get('/order/view/{id}', [SuperVisorOrderController::class, 'view'])->name('supervisor.order.view');
+// Route::get('/order', [SuperVisorOrderController::class, 'index'])->name('order.index');
+// Route::get('/order/view/{id}', [SuperVisorOrderController::class, 'view'])->name('supervisor.order.view');
 
-Route::get('/manage', [SuperVisorManageController::class, 'index'])->name('manage.index');
+// Route::get('/manage', [SuperVisorManageController::class, 'index'])->name('manage.index');
+
+//Kurir
+// Route::get('/dashboard', [KurirDashboardController::class, 'index'])->name('dashboard');
+
+// Route::get('/order', [KurirOrderController::class, 'index'])->name('order.index');
+// Route::post('/order/store', [KurirOrderController::class, 'store'])->name('order.store');
+// Route::get('/order/view/{id}', [KurirOrderController::class, 'view'])->name('order.view');
+
+// Route::get('/update', [KurirUpdateController::class, 'index'])->name('update.index');
