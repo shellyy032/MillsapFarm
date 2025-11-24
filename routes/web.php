@@ -18,6 +18,12 @@ use App\Http\Controllers\SuperVisorManageController;
 use App\Http\Controllers\KurirDashboardController;
 use App\Http\Controllers\KurirOrderController;
 use App\Http\Controllers\KurirUpdateController;
+use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\UserProductController;
+use App\Http\Controllers\UserCartController;
+use App\Http\Controllers\UserMyOrderController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\UserHistoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -103,3 +109,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/order/view/{id}', [KurirOrderController::class, 'view'])->name('order.view');
 
 // Route::get('/update', [KurirUpdateController::class, 'index'])->name('update.index');
+
+Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
+Route::get('/product', [UserProductController::class, 'index'])->name('user.product');
+Route::get('/product/{id}', [UserProductController::class, 'show']);
+
+Route::get('/cart', [UserCartController::class, 'index'])->name('user.cart');
+
+Route::get('/order', [UserMyOrderController::class, 'index'])->name('user.myorder');
+
+Route::get('/profile', [UserProfileController::class, 'index'])->name('user.profile');
+
+Route::get('/history', [UserHistoryController::class, 'index'])->name('user.history');

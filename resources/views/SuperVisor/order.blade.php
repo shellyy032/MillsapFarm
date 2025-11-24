@@ -39,7 +39,7 @@
     </div>
 
     <div class="w-full bg-white h-screen rounded-t-[50%] -mt-32 flex flex-col items-center justify-start pt-10 shadow-lg">
-        <h1 class="text-yellow-600 text-5xl font-extrabold tracking-wider">DAILY REPORT</h1>
+        <h1 class="text-yellow-600 text-5xl font-extrabold tracking-wider">ORDER</h1>
     <div class="flex justify-center mt-4">
         <div class="flex items-center gap-4 bg-white rounded-full shadow px-6 py-2 text-black">
             <div class="flex items-center bg-white rounded-full shadow px-4 py-2">
