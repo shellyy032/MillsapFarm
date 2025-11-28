@@ -166,8 +166,9 @@
                 <button class="w-full border border-gray-300 py-2 text-white tracking-widest">-- SEND --</button>
             </div>
         </div>
-        <p class="text-center text-sm mt-10 opacity-80"> This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
     </div>
+</body>
+</html>
 
 
 

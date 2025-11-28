@@ -24,6 +24,7 @@ use App\Http\Controllers\UserCartController;
 use App\Http\Controllers\UserMyOrderController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UserHistoryController;
+use App\Http\Controllers\GuestDashboardController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -110,15 +111,19 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/update', [KurirUpdateController::class, 'index'])->name('update.index');
 
-Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+//user
+// Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
 
-Route::get('/product', [UserProductController::class, 'index'])->name('user.product');
-Route::get('/product/{id}', [UserProductController::class, 'show']);
+// Route::get('/product', [UserProductController::class, 'index'])->name('user.product');
+// Route::get('/product/{id}', [UserProductController::class, 'show']);
 
-Route::get('/cart', [UserCartController::class, 'index'])->name('user.cart');
+// Route::get('/cart', [UserCartController::class, 'index'])->name('user.cart');
 
-Route::get('/order', [UserMyOrderController::class, 'index'])->name('user.myorder');
+// Route::get('/order', [UserMyOrderController::class, 'index'])->name('user.myorder');
 
-Route::get('/profile', [UserProfileController::class, 'index'])->name('user.profile');
+// Route::get('/profile', [UserProfileController::class, 'index'])->name('user.profile');
 
-Route::get('/history', [UserHistoryController::class, 'index'])->name('user.history');
+// Route::get('/history', [UserHistoryController::class, 'index'])->name('user.history');
+
+//guest
+Route::get('/dashboard', [GuestDashboardController::class, 'index'])->name('guest.dashboard');
